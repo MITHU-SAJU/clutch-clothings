@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="../assests/css/styles.css">
+</head>
+
+<body>
+    <!-- Sidebar Toggle Button -->
+    <input type="checkbox" id="checkbox" hidden>
+    <label for="checkbox" class="toggle-btn" id="toggleBtn">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </label>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <!-- <img src="./assets/logo.png" alt="Logo" /> -->
+        </div>
+        <ul>
+            <!-- Dashboard -->
+            <li>
+                <a href="../index.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Inwards -->
+            <li>
+                <a href="../inwards/inward-list.html">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>Inwards</span>
+                </a>
+            </li>
+
+            <!-- Outwards -->
+            <li>
+                <a href="../outwards/outward-list.html">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Outwards</span>
+                </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="../products/product-list.html">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+
+            <!-- Customers -->
+            <li>
+                <a href="../customer/customer-list.html">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+
+            <!-- Suppliers -->
+            <li>
+                <a href="./supplier-list.html">
+                    <i class="fas fa-truck"></i>
+                    <span>Suppliers</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <div id="mainHeader"
+            class="d-flex justify-content-between align-items-center px-4 py-2 bg-white text-dark shadow-sm w-100">
+            <h4 class="fw-bold mb-0">Supplier List</h4>
+            <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-bell-fill fs-4" role="button" title="Notifications"></i>
+                <i class="bi bi-person-circle fs-4" role="button" title="Profile"></i>
+            </div>
+        </div>
+
+
+        <div class="container-fluid my-5">
+            <div class="custom-box p-4">
+                <div class="d-flex justify-content-end align-items-center mb-4">
+                    <a href="./add-supplier.html" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-1"></i> Add Supplier
+                    </a>
+
+                </div>
+                <div class="table-responsive">
+                    <table id="customerTable" class="table table-hover align-middle">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Supplier Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>+91 9876543210</td>
+                                <td>john@example.com</td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-warning me-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Jane Smith</td>
+                                <td>+91 9123456780</td>
+                                <td>jane@example.com</td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-warning me-2">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../assests/js/script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#customerTable').DataTable({
+                pageLength: 10,
+                responsive: true,
+                language: {
+                    search: "Search:",
+                    lengthMenu: "Show _MENU_ entries per page",
+                    info: "Showing _START_ to _END_ of _TOTAL_ entries",
+                    paginate: {
+                        first: "First",
+                        last: "Last",
+                        next: "Next",
+                        previous: "Previous"
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

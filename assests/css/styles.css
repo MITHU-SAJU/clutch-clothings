@@ -1,0 +1,412 @@
+body{
+    background-color:rgb(247, 247, 247);
+}
+.bg-custom{
+    background-color: #003287;
+}
+
+
+.sidebar-logo {
+  background-image: url(./assets/images/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 50%;     /* Set desired width */
+  height: 100px;    /* Set desired height */
+  display: block;
+  margin-left: 5rem;
+  margin-top: -2rem;
+   /* Center it if needed */
+}
+
+.sidebar {
+  width: 250px;
+  background: #ffffff;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #333;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  
+  /* Hide scrollbar for Chrome, Safari, Opera, and Edge (WebKit browsers) */
+  .sidebar::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+    display: none;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari, Opera, and Edge (WebKit browsers) */
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+/* Hide scrollbar for Chrome, Safari, Opera, and Edge (WebKit browsers) */
+.sidebar::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  display: none;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar.collapsed ul li a span {
+  display: none;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  color: #333;
+  text-decoration: none;
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  position: relative;
+}
+
+.sidebar ul li a i {
+  margin-right: 15px;
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  color: black; /* keep your icon blue */
+}
+
+/* Hover Effects */
+.sidebar ul li a:hover {
+background-color: #f6f9ff;
+  color: #003287;
+  border-left: 4px solid #003287;
+  margin-left: 25px;
+}
+
+.sidebar ul li a {
+  transition: all 0.5s ease; /* Adjust duration as needed */
+}
+
+
+/* Submenu */
+.submenu {
+  display: none;
+background-color: #f6f9ff;
+padding-left: 15px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+
+transition: all 0.5s ease;
+}
+
+.submenu.open {
+  display: block;
+}
+
+/* Arrow for submenu toggle */
+.has-submenu .arrow {
+  margin-left: auto;
+  font-size: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.arrow.rotated {
+  transform: rotate(180deg);
+}
+
+/* Sidebar Toggle Button */
+/* Toggle Button Bars */
+.toggle-btn {
+  width: 35px;
+  height: 30px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1001;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.bars {
+  height: 4px;
+  background-color: #003287;
+  border-radius: 2px;
+  transition: all 0.4s ease;
+}
+
+/* Bar animations */
+#checkbox:checked + .toggle-btn #bar1 {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+#checkbox:checked + .toggle-btn #bar2 {
+  opacity: 0;
+}
+
+#checkbox:checked + .toggle-btn #bar3 {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Sidebar toggle using JS class, you still use .collapsed or .active in JS */
+.sidebar {
+  transition: all 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar.active {
+  left: 0;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    left: -250px;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  .fw-bold {
+    margin-left: 2rem;
+  }
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  padding: 10px;
+  transition: margin-left 0.3s ease;
+}
+.main-content.expanded {
+  margin-left: 60px;
+}
+
+/* Main Card/Container */
+.custom-box {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.form-label {
+      font-weight: 600;
+      font-size: 12px;
+      color: #34495e;
+      text-transform: uppercase;
+      letter-spacing: 0.08px;
+      font-family: "Segoe UI", Roboto, sans-serif;
+ }
+    .form-control,
+    .form-select {
+          padding: 6px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.2s ease;
+    }
+
+    .form-label {
+       text-align: left !important;
+       display: block;
+       font-family: "Segoe UI", Roboto, sans-serif;
+           margin-top: 1rem;
+
+}
+
+
+/* ---------- Buttons ---------- */
+.btn {
+  border-radius: 12px;
+  font-weight: 600;
+  padding: 0.55rem 1.25rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+}
+
+/* ---------- Primary Button ---------- */
+.btn-primary {
+  background: linear-gradient(135deg, #0d6efd, #0056b3);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #0056b3, #0d6efd);
+}
+
+/* ---------- Success Button ---------- */
+.btn-success {
+  background: linear-gradient(135deg, #28a745, #1e7e34);
+  color: #fff;
+  border: none;
+}
+
+.btn-success:hover {
+  background: linear-gradient(135deg, #1e7e34, #28a745);
+}
+
+/* ---------- Danger Button ---------- */
+.btn-danger {
+  background: linear-gradient(135deg, #dc3545, #a71d2a);
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #a71d2a, #dc3545);
+}
+
+/* ---------- Optional: Card/Container Styling ---------- */
+.border-card {
+  border-radius: 15px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  background-color: #fff;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.border-card:hover {
+  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  transform: translateY(-3px);
+}
+
+
+
+/* DataTable Header Style */
+table.dataTable thead th {
+    background-color: #003287; /* red color */
+    color: #fff;               /* white text */
+    text-align: center;        /* center text */
+    font-weight: 600;   
+    font-size: 17px;       /* optional bold text */
+}
+
+table.dataTable tbody td {
+    text-align: center;        /* center text in all cells */
+    font-size: 13px;
+    color: #333;               /* optional text color */
+    vertical-align: middle;    /* vertically center content */
+}
+
+/* ---------- Table Styling ---------- */
+
+
+/* Table Header */
+table thead th {
+    background-color: #003287 !important; /* red header */
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+}
+
+/* Table Body Cells */
+table tbody td {
+    text-align: center;
+    font-size: 13px;
+    color: #333;
+    padding: 10px;
+    vertical-align: middle;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+
+div.dataTables_wrapper div.dataTables_length select{
+    width: 55%;
+}
+
+
+
+        .card-summary {
+            border-radius: 15px;
+            padding: 30px;
+            color: black;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .card-summary:hover {
+            transform: translateY(-5px);
+        }
+
+      .bg-custom-customers {
+    background: linear-gradient(135deg, #ffe0b2, #ffcc80); /* Soft orange */
+}
+
+.bg-custom-suppliers {
+    background: linear-gradient(135deg, #b2f0ff, #80e0ff); /* Soft cyan */
+}
+
+.bg-custom-inwards {
+    background: linear-gradient(135deg, #d0f0c0, #a0e090); /* Soft green */
+}
+
+.bg-custom-outwards {
+    background: linear-gradient(135deg, #f8c8d8, #f5a0c0); /* Soft pink */
+}
+
+
+        .quick-action a {
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .quick-action a:hover {
+            transform: scale(1.05);
+        }
+
+        .table-custom {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        .table thead {
+            background-color: #0d6efd;
+            color: #fff;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9f5ff;
+        }

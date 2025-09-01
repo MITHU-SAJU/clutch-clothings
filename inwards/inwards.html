@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../assests/css/styles.css">
+</head>
+
+<body>
+    <!-- Sidebar Toggle Button -->
+    <input type="checkbox" id="checkbox" hidden>
+    <label for="checkbox" class="toggle-btn" id="toggleBtn">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </label>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <!-- <img src="./assets/logo.png" alt="Logo" /> -->
+        </div>
+        <ul>
+            <!-- Dashboard -->
+            <li>
+                <a href="../index.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Inwards -->
+            <li>
+                <a href="./inward-list.html">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>Inwards</span>
+                </a>
+            </li>
+
+            <!-- Outwards -->
+            <li>
+                <a href="../outwards/outward-list.html">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Outwards</span>
+                </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="../products/product-list.html">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+
+            <!-- Customers -->
+            <li>
+                <a href="../customer/customer-list.html">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+
+            <!-- Suppliers -->
+            <li>
+                <a href="../suppliers/supplier-list.html">
+                    <i class="fas fa-truck"></i>
+                    <span>Suppliers</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <div id="mainHeader"
+            class="d-flex justify-content-between align-items-center px-4 py-2 bg-white text-dark shadow-sm w-100">
+            <h4 class="fw-bold mb-0">Inwards</h4>
+            <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-bell-fill fs-4" role="button" title="Notifications"></i>
+                <i class="bi bi-person-circle fs-4" role="button" title="Profile"></i>
+            </div>
+        </div>
+
+
+        <div class="container-fluid my-5">
+            <div class="custom-box p-4">
+                <!-- Inward Form -->
+                <form id="inwardForm" class="row g-3">
+
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-8 col-lg-6">
+                            <div class="border rounded-4 p-4 shadow-sm mb-5 mt-3 text-center bg-white">
+
+                                <!-- Label -->
+                                <label class="form-label fw-bold fs-5 mb-3 d-block">Supplier</label>
+
+                                <!-- Customer Selection -->
+                                <div
+                                    class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-2">
+                                    <select id="supplier" class="form-select mb-2 mb-sm-0" required
+                                        style="flex: 1; border-radius: 10px; border: 1px solid #ddd; min-width: 150px;">
+                                        <option value="" disabled selected>Select Supplier</option>
+                                        <option value="supplier1">Supplier 1</option>
+                                        <option value="supplier2">Supplier 2</option>
+                                        <option value="supplier3">Supplier 3</option>
+                                    </select>
+
+                                    <!-- Add Supplier Button -->
+                                    <button type="button" class="btn btn-outline-primary w-100 w-sm-auto"
+                                        data-bs-toggle="modal" data-bs-target="#addSupplierModal">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Product -->
+                    <div class="col-md-4">
+                        <label class="form-label">Product</label>
+                        <select id="product" class="form-select" required>
+                            <option value="" disabled selected>Select Product</option>
+                            <option value="Yarn Type A">Yarn Type A</option>
+                            <option value="Yarn Type B">Yarn Type B</option>
+                            <option value="Yarn Type C">Yarn Type C</option>
+                        </select>
+                    </div>
+
+                    <!-- Quantity -->
+                    <div class="col-md-4">
+                        <label class="form-label">Quantity</label>
+                        <input type="number" id="quantity" class="form-control" placeholder="Enter quantity" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Amount</label>
+                        <input type="number" id="rate" class="form-control" placeholder="Enter amount" required>
+                    </div>
+                    <!-- Submit -->
+                    <div class="col-12 text-center mt-3">
+                        <button type="submit" class="btn btn-success px-4">
+                            <i class="fas fa-plus-circle me-1"></i> Add Inward
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="container-fluid my-5">
+            <div class="custom-box p-4">
+                <h4 class="fw-bold text-secondary mb-3">Inward Entries</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle text-center" id="inwardTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>S.No</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be inserted here -->
+                        </tbody>
+                        <!-- <tfoot class="fw-bold table-success text-center">
+                            <tr>
+                                <td colspan="3">Grand Total</td>
+                                <td>1320</td>
+                            </tr>
+                        </tfoot> -->
+                    </table>
+                </div>
+                <div class="mt-4 text-center">
+                    <button type="submit" class="btn btn-primary px-5 rounded-3 shadow">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="addSupplierModal" tabindex="-1" aria-labelledby="addSupplierModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-custom text-white">
+                    <h5 class="modal-title" id="addSupplierModalLabel">Add New Supplier</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="supplierForm">
+                        <div class="mb-3">
+                            <label class="form-label">Supplier Name</label>
+                            <input type="text" id="supplierName" class="form-control" placeholder="Enter supplier name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Company Name</label>
+                            <input type="text" id="supplierCompany" class="form-control"
+                                placeholder="Enter company name">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Contact Number</label>
+                            <input type="text" id="supplierContact" class="form-control"
+                                placeholder="Enter contact number">
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-success px-4 fw-bold">
+                                Save Supplier
+                            </button>
+                        </div>
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../assests/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Load existing data from localStorage
+        let inwardData = JSON.parse(localStorage.getItem("inwardData")) || [];
+
+        const inwardForm = document.getElementById("inwardForm");
+        const inwardTableBody = document.querySelector("#inwardTable tbody");
+
+        // Function to render table
+        function renderTable() {
+            inwardTableBody.innerHTML = "";
+            inwardData.forEach((entry, index) => {
+                inwardTableBody.innerHTML += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${entry.product}</td>
+          <td>${entry.quantity}</td>
+          <td>${entry.rate}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" onclick="deleteEntry(${index})">
+              <i class="fas fa-trash"></i> 
+            </button>
+          </td>
+        </tr>
+      `;
+            });
+            localStorage.setItem("inwardData", JSON.stringify(inwardData));
+        }
+
+        // Add new entry
+        inwardForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const product = document.getElementById("product").value;
+            const quantity = document.getElementById("quantity").value;
+            const rate = document.getElementById("rate").value;
+
+            if (product && quantity) {
+                inwardData.push({
+                    product,
+                    quantity,
+                    rate
+
+                });
+                renderTable();
+                inwardForm.reset();
+            }
+        });
+
+        // Delete entry
+        function deleteEntry(index) {
+            inwardData.splice(index, 1);
+            renderTable();
+        }
+
+        // Initial render
+        renderTable();
+    </script>
+
+    <script>
+        // Handle supplier form submission
+        document.getElementById("supplierForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const supplierName = document.getElementById("supplierName").value.trim();
+            if (supplierName) {
+                const supplierDropdown = document.getElementById("supplier");
+
+                // Create new option
+                const newOption = document.createElement("option");
+                newOption.value = supplierName.toLowerCase().replace(/\s+/g, '-');
+                newOption.textContent = supplierName;
+
+                // Add to dropdown and select it
+                supplierDropdown.appendChild(newOption);
+                supplierDropdown.value = newOption.value;
+
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById("addSupplierModal"));
+                modal.hide();
+
+                // Reset form
+                e.target.reset();
+            }
+        });
+    </script>
+</body>
+
+</html>

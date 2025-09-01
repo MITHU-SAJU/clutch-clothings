@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outward Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .report-container {
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .report-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .report-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: black;
+        }
+
+        .section-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .customer-info span {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .customer-info .label {
+            font-weight: 600;
+            color: #6c757d;
+        }
+
+        table {
+            border-collapse: separate !important;
+            border-spacing: 0 8px;
+        }
+
+        thead th {
+            background-color: #003287 !important;
+            color: #fff;
+        }
+
+        tbody tr {
+            background-color: #f1f3f5;
+        }
+
+        tfoot tr {
+            background-color: #d1e7dd;
+            font-weight: 600;
+        }
+
+        .generated-date {
+            font-style: italic;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container report-container">
+        <div class="report-card">
+            <!-- Header -->
+            <div class="text-center report-header mb-5">
+                <h2>Outward Entries Report</h2>
+            </div>
+
+            <!-- Customer Info -->
+            <div class="customer-info mb-5">
+                <h4 class="section-title text-center mb-4"><i class="fas fa-user me-2"></i> Customer Details</h4>
+                <div class="row justify-content-center g-3">
+                    <div class="col-md-5">
+                        <div class="border rounded p-3 shadow-sm bg-white text-center">
+                            <span class="label d-block text-secondary">Customer Name:</span>
+                            <span class="value fw-semibold fs-5">Customer 1</span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="border rounded p-3 shadow-sm bg-white text-center">
+                            <span class="label d-block text-secondary">Company:</span>
+                            <span class="value fw-semibold fs-5">ABC Textiles</span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="border rounded p-3 shadow-sm bg-white text-center">
+                            <span class="label d-block text-secondary">Contact:</span>
+                            <span class="value fw-semibold fs-5">+91 9876543210</span>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="border rounded p-3 shadow-sm bg-white text-center">
+                            <span class="label d-block text-secondary">Date:</span>
+                            <span class="value fw-semibold fs-5">01-Sep-2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Outward Table -->
+            <div class="outward-entries mb-4">
+                <h4 class="section-title"><i class="fas fa-boxes me-2"></i> Outward Entries</h4>
+                <div class="table-responsive">
+                    <table class="table align-middle text-center">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Rate</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Yarn Type A</td>
+                                <td>100</td>
+                                <td>5</td>
+                                <td>500</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Yarn Type B</td>
+                                <td>50</td>
+                                <td>8</td>
+                                <td>400</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Yarn Type C</td>
+                                <td>70</td>
+                                <td>6</td>
+                                <td>420</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Grand Total</td>
+                                <td>1320</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="text-end mt-4">
+                <p class="generated-date mb-0">Generated on: 01-Sep-2025</p>
+            </div>
+        </div>
+        <div class="mt-4 text-center">
+            <button type="submit" class="btn btn-danger px-5 rounded-3 shadow">
+                Download
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

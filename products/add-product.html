@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../assests/css/styles.css">
+</head>
+
+<body>
+    <!-- Sidebar Toggle Button -->
+    <input type="checkbox" id="checkbox" hidden>
+    <label for="checkbox" class="toggle-btn" id="toggleBtn">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </label>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <!-- <img src="./assets/logo.png" alt="Logo" /> -->
+        </div>
+        <ul>
+            <!-- Dashboard -->
+            <li>
+                <a href="../index.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Inwards -->
+            <li>
+                <a href="../inwards/inward-list.html">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>Inwards</span>
+                </a>
+            </li>
+
+            <!-- Outwards -->
+            <li>
+                <a href="../outwards/outward-list.html">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Outwards</span>
+                </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="./product-list.html">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+
+            <!-- Customers -->
+            <li>
+                <a href="../customer/customer-list.html">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+
+            <!-- Suppliers -->
+            <li>
+                <a href="../suppliers/supplier-list.html">
+                    <i class="fas fa-truck"></i>
+                    <span>Suppliers</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <div id="mainHeader"
+            class="d-flex justify-content-between align-items-center px-4 py-2 bg-white text-dark shadow-sm w-100">
+            <h4 class="fw-bold mb-0">Add Products</h4>
+            <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-bell-fill fs-4" role="button" title="Notifications"></i>
+                <i class="bi bi-person-circle fs-4" role="button" title="Profile"></i>
+            </div>
+        </div>
+
+
+        <div class="container-fluid my-5">
+            <div class="custom-box p-4">
+
+
+                <form>
+                    <div class="row g-3">
+                        <!-- Product Code -->
+                        <div class="col-md-6">
+                            <label class="form-label">Product Code</label>
+                            <input type="text" class="form-control" placeholder="Enter product code">
+                        </div>
+
+                        <!-- Product Name -->
+                        <div class="col-md-6">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" class="form-control" placeholder="Enter product name">
+                        </div>
+
+                        <!-- Shade -->
+                        <div class="col-md-6">
+                            <label class="form-label">Shade #</label>
+                            <input type="text" class="form-control" placeholder="Enter shade number">
+                        </div>
+
+                        <!-- Colour -->
+                        <div class="col-md-6">
+                            <label class="form-label">Colour</label>
+                            <select class="form-select">
+                                <option selected disabled>Choose colour</option>
+                                <option>Red</option>
+                                <option>Blue</option>
+                                <option>Green</option>
+                                <option>Yellow</option>
+                            </select>
+                        </div>
+
+                        <!-- Yarn Count / Item Type -->
+                        <div class="col-md-6">
+                            <label class="form-label">Yarn Count</label>
+                            <select class="form-select">
+                                <option selected disabled>Select type</option>
+                                <option>2 Ply</option>
+                                <option>3 Ply</option>
+                                <option>Poly/Nylon</option>
+                                <option>2 Ply Spun</option>
+                            </select>
+                        </div>
+
+                        <!-- Yarn Type -->
+                        <div class="col-md-6">
+                            <label class="form-label">Yarn Type</label>
+                            <select class="form-select">
+                                <option selected disabled>Select yarn type</option>
+                                <option>Small Cone</option>
+                                <option>Big Cone</option>
+                                <option>1kg Cone</option>
+                                <option>Bundle</option>
+                            </select>
+                        </div>
+
+                        <!-- Unit -->
+                        <div class="col-md-6">
+                            <label class="form-label">Unit</label>
+                            <select class="form-select">
+                                <option selected disabled>Choose unit</option>
+                                <option>PCS</option>
+                                <option>KG</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <div class="mt-4 text-center">
+                        <button type="submit" class="btn btn-primary px-5 rounded-3 shadow">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../assests/js/script.js"></script>
+
+</body>
+
+</html>
