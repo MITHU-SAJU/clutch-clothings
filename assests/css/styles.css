@@ -245,53 +245,55 @@ transition: all 0.5s ease;
 }
 
 
-/* ---------- Buttons ---------- */
-.btn {
-  border-radius: 12px;
-  font-weight: 600;
-  padding: 0.55rem 1.25rem;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+.btn-add{
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  border: 3px solid #003287;
+  border-radius: 1px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: #003287;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
+
+.btn-add:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #003287;
+  z-index: -1;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+    color: white;
 }
 
-/* ---------- Primary Button ---------- */
-.btn-primary {
-  background: linear-gradient(135deg, #0d6efd, #0056b3);
-  color: #fff;
-  border: none;
+.btn-add :hover, .btn-add:focus {
+  color: white !important;
 }
 
-.btn-primary:hover {
-  background: linear-gradient(135deg, #0056b3, #0d6efd);
+.btn-add:hover:before, .btn-add:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
 }
 
-/* ---------- Success Button ---------- */
-.btn-success {
-  background: linear-gradient(135deg, #28a745, #1e7e34);
-  color: #fff;
-  border: none;
+.btn-add:active {
+  transform: scale(0.9);
 }
 
-.btn-success:hover {
-  background: linear-gradient(135deg, #1e7e34, #28a745);
-}
-
-/* ---------- Danger Button ---------- */
-.btn-danger {
-  background: linear-gradient(135deg, #dc3545, #a71d2a);
-  color: #fff;
-  border: none;
-}
-
-.btn-danger:hover {
-  background: linear-gradient(135deg, #a71d2a, #dc3545);
-}
 
 /* ---------- Optional: Card/Container Styling ---------- */
 .border-card {
@@ -410,3 +412,30 @@ div.dataTables_wrapper div.dataTables_length select{
         .table tbody tr:hover {
             background-color: #e9f5ff;
         }
+
+/* Mobile-friendly DataTables adjustments */
+@media (max-width: 767px) {
+
+  /* Stack controls nicely */
+  div.dataTables_wrapper .dataTables_length,
+  div.dataTables_wrapper .dataTables_filter,
+  div.dataTables_wrapper .dataTables_info,
+  div.dataTables_wrapper .dataTables_paginate {
+    text-align: left !important;
+    margin-bottom: 10px;
+    width: 100%; /* Full width blocks */
+  }
+
+  /* Search box full width on small screens */
+  div.dataTables_wrapper .dataTables_filter input {
+    width: 100% !important;
+    margin-top: 5px;
+  }
+
+  /* Pagination buttons better spacing */
+  div.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 5px 10px;
+    margin: 2px;
+  }
+}
+        

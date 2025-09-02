@@ -69,14 +69,14 @@
 
             <!-- Suppliers -->
             <li>
-                <a href="./supplier-list.html">
+                <a href="../suppliers/supplier-list.html">
                     <i class="fas fa-truck"></i>
                     <span>Suppliers</span>
                 </a>
             </li>
 
             <li>
-                <a href="../user-creation/user-list.html">
+                <a href="./user-list.html">
                     <i class="fas fa-user"></i>
                     <span>Users</span>
                 </a>
@@ -89,7 +89,7 @@
         <!-- Header -->
         <div id="mainHeader"
             class="d-flex justify-content-between align-items-center px-4 py-2 bg-white text-dark shadow-sm w-100">
-            <h4 class="fw-bold mb-0">Supplier List</h4>
+            <h4 class="fw-bold mb-0">User List</h4>
             <div class="d-flex align-items-center gap-3">
                 <i class="bi bi-bell-fill fs-4" role="button" title="Notifications"></i>
                 <i class="bi bi-person-circle fs-4" role="button" title="Profile"></i>
@@ -100,30 +100,32 @@
         <div class="container-fluid my-5">
             <div class="custom-box p-4">
                 <div class="d-flex justify-content-end align-items-center mb-4">
-                    <a href="./add-supplier.html" class="btn btn-add">
-                        <i class="bi bi-plus-circle me-1"></i> Add Supplier
+                    <a href="./add-user.html" class="btn btn-add">
+                        <i class="bi bi-plus-circle me-1"></i> Add User
                     </a>
 
                 </div>
                 <div class="table-responsive">
-                    <table id="customerTable" class="table table-hover align-middle">
+                    <table id="userTable" class="table table-hover align-middle">
                         <thead class="table-primary">
                             <tr>
                                 <th>S.No</th>
-                                <th>Supplier Name</th>
+                                <th>Username</th>
                                 <th>Phone</th>
-                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Status</th>
                                 <th class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>John Doe</td>
+                                <td>JohnDoe</td>
                                 <td>+91 9876543210</td>
-                                <td>john@example.com</td>
+                                <td>Admin</td>
+                                <td><span class="badge bg-success">Active</span></td>
                                 <td class="text-center">
-                                    <button class="btn btn-sm btn-warning me-2">
+                                    <button class="btn btn-sm btn-warning me-1">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                     <button class="btn btn-sm btn-danger">
@@ -133,11 +135,27 @@
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Jane Smith</td>
+                                <td>JaneSmith</td>
                                 <td>+91 9123456780</td>
-                                <td>jane@example.com</td>
+                                <td>User</td>
+                                <td><span class="badge bg-secondary">Inactive</span></td>
                                 <td class="text-center">
-                                    <button class="btn btn-sm btn-warning me-2">
+                                    <button class="btn btn-sm btn-warning me-1">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>RaviKumar</td>
+                                <td>+91 9988776655</td>
+                                <td>Manager</td>
+                                <td><span class="badge bg-success">Active</span></td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm btn-warning me-1">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                     <button class="btn btn-sm btn-danger">
@@ -146,6 +164,7 @@
                                 </td>
                             </tr>
                         </tbody>
+
                     </table>
                 </div>
 
@@ -162,7 +181,7 @@
     <script src="../assests/js/script.js"></script>
     <script>
         $(document).ready(function () {
-            $('#customerTable').DataTable({
+            $('#userTable').DataTable({
                 pageLength: 10,
                 responsive: true,
                 language: {

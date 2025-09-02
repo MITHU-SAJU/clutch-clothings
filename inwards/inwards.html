@@ -73,6 +73,13 @@
                     <span>Suppliers</span>
                 </a>
             </li>
+
+            <li>
+                <a href="../user-creation/user-list.html">
+                    <i class="fas fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
         </ul>
     </nav>
 
@@ -92,29 +99,27 @@
         <div class="container-fluid my-5">
             <div class="custom-box p-4">
                 <!-- Inward Form -->
-                <form id="inwardForm" class="row g-3">
+                <form id="inwardForm" class="row g-3 justify-content-center">
 
-                    <div class="row justify-content-center">
-                        <div class="col-12 col-md-8 col-lg-6">
-                            <div class="border rounded-4 p-4 shadow-sm mb-5 mt-3 text-center bg-white">
+                    <!-- Supplier (full width row) -->
+                    <div class="col-12">
+                        <div class="border rounded-4 p-4 shadow-sm mb-4 bg-white text-center">
+                            <label class=" fw-bold fs-5 mb-3 w-100 text-center">SUPPLIER</label>
 
-                                <!-- Label -->
-                                <label class="form-label fw-bold fs-5 mb-3 d-block">Supplier</label>
-
-                                <!-- Customer Selection -->
-                                <div
-                                    class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-2">
-                                    <select id="supplier" class="form-select mb-2 mb-sm-0" required
-                                        style="flex: 1; border-radius: 10px; border: 1px solid #ddd; min-width: 150px;">
+                            <div class="row g-2 justify-content-center">
+                                <div class="col-12 col-sm-8 col-md-6">
+                                    <select id="supplier" class="form-select w-100" required
+                                        style="border-radius: 10px; border: 1px solid #ddd;">
                                         <option value="" disabled selected>Select Supplier</option>
                                         <option value="supplier1">Supplier 1</option>
                                         <option value="supplier2">Supplier 2</option>
                                         <option value="supplier3">Supplier 3</option>
                                     </select>
-
+                                </div>
+                                <div class="col-12 col-sm-2 col-md-1 d-grid">
                                     <!-- Add Supplier Button -->
-                                    <button type="button" class="btn btn-outline-primary w-100 w-sm-auto"
-                                        data-bs-toggle="modal" data-bs-target="#addSupplierModal">
+                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                        data-bs-target="#addSupplierModal">
                                         <i class="fas fa-plus"></i>
                                     </button>
                                 </div>
@@ -122,11 +127,8 @@
                         </div>
                     </div>
 
-
-
-
-                    <!-- Product -->
-                    <div class="col-md-4">
+                    <!-- Product / Quantity / Amount in one row -->
+                    <div class="col-6">
                         <label class="form-label">Product</label>
                         <select id="product" class="form-select" required>
                             <option value="" disabled selected>Select Product</option>
@@ -136,25 +138,23 @@
                         </select>
                     </div>
 
-                    <!-- Quantity -->
-                    <div class="col-md-4">
+                    <div class="col-6">
                         <label class="form-label">Quantity</label>
                         <input type="number" id="quantity" class="form-control" placeholder="Enter quantity" required>
                     </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label">Amount</label>
-                        <input type="number" id="rate" class="form-control" placeholder="Enter amount" required>
-                    </div>
+
                     <!-- Submit -->
                     <div class="col-12 text-center mt-3">
                         <button type="submit" class="btn btn-success px-4">
                             <i class="fas fa-plus-circle me-1"></i> Add Inward
                         </button>
                     </div>
+
                 </form>
             </div>
         </div>
+
 
 
         <div class="container-fluid my-5">
@@ -167,7 +167,6 @@
                                 <th>S.No</th>
                                 <th>Product</th>
                                 <th>Quantity</th>
-                                <th>Amount</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -183,7 +182,7 @@
                     </table>
                 </div>
                 <div class="mt-4 text-center">
-                    <button type="submit" class="btn btn-primary px-5 rounded-3 shadow">
+                    <button type="submit" class="btn btn-add px-5 rounded-3 shadow">
                         Submit
                     </button>
                 </div>
@@ -250,7 +249,6 @@
           <td>${index + 1}</td>
           <td>${entry.product}</td>
           <td>${entry.quantity}</td>
-          <td>${entry.rate}</td>
           <td>
             <button class="btn btn-sm btn-danger" onclick="deleteEntry(${index})">
               <i class="fas fa-trash"></i> 
@@ -267,13 +265,11 @@
             e.preventDefault();
             const product = document.getElementById("product").value;
             const quantity = document.getElementById("quantity").value;
-            const rate = document.getElementById("rate").value;
 
             if (product && quantity) {
                 inwardData.push({
                     product,
                     quantity,
-                    rate
 
                 });
                 renderTable();

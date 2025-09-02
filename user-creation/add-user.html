@@ -68,14 +68,14 @@
 
             <!-- Suppliers -->
             <li>
-                <a href="./supplier-list.html">
+                <a href="../suppliers/supplier-list.html">
                     <i class="fas fa-truck"></i>
                     <span>Suppliers</span>
                 </a>
             </li>
 
             <li>
-                <a href="../user-creation/user-list.html">
+                <a href="./user-list.html">
                     <i class="fas fa-user"></i>
                     <span>Users</span>
                 </a>
@@ -83,36 +83,38 @@
         </ul>
     </nav>
 
-
     <div class="main-content" id="mainContent">
         <!-- Header -->
         <div id="mainHeader"
             class="d-flex justify-content-between align-items-center px-4 py-2 bg-white text-dark shadow-sm w-100">
-            <h4 class="fw-bold mb-0">Add Supplier</h4>
+            <h4 class="fw-bold mb-0">Create User</h4>
             <div class="d-flex align-items-center gap-3">
                 <i class="bi bi-bell-fill fs-4" role="button" title="Notifications"></i>
                 <i class="bi bi-person-circle fs-4" role="button" title="Profile"></i>
             </div>
         </div>
 
-
+        <!-- User Creation Form -->
         <div class="container-fluid my-5">
             <div class="custom-box p-4">
                 <form>
                     <div class="row g-3">
+                        <!-- Full Name -->
                         <div class="col-md-6">
-                            <label class="form-label">Company Name</label>
-                            <input type="text" class="form-control" placeholder="Enter company name">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-control" placeholder="Enter full name" required>
                         </div>
 
+                        <!-- Username -->
                         <div class="col-md-6">
-                            <label class="form-label">Contact Person</label>
-                            <input type="text" class="form-control" placeholder="Enter contact person name">
+                            <label class="form-label">Username</label>
+                            <input type="text" class="form-control" placeholder="Enter username" required>
                         </div>
+
                         <!-- Email -->
                         <div class="col-md-6">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="Enter email address">
+                            <input type="email" class="form-control" placeholder="Enter email address" required>
                         </div>
 
                         <!-- Phone -->
@@ -121,25 +123,51 @@
                             <input type="text" class="form-control" placeholder="Enter phone number">
                         </div>
 
-                        <!-- Address -->
-                        <div class="col-12">
-                            <label class="form-label">Address</label>
-                            <textarea class="form-control" placeholder="Enter address" rows="4"></textarea>
+                        <!-- Password -->
+                        <div class="col-md-6">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" placeholder="Enter password" required>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="col-md-6">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Confirm password" required>
+                        </div>
+
+                        <!-- Role -->
+                        <div class="col-md-6">
+                            <label class="form-label">Role</label>
+                            <select class="form-select" required>
+                                <option value="" disabled selected>Select role</option>
+                                <option value="admin">Admin</option>
+                                <option value="manager">Manager</option>
+                                <option value="staff">Staff</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+
+                        <!-- Status -->
+                        <div class="col-md-6">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" required>
+                                <option value="active" selected>Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
                         </div>
                     </div>
 
                     <!-- Submit -->
                     <div class="mt-4 text-center">
                         <button type="submit" class="btn btn-add px-5 rounded-3 shadow">
-                            Submit
+                            Create User
                         </button>
                     </div>
                 </form>
-
-
             </div>
         </div>
     </div>
+
     </div>
     <script src="../assests/js/script.js"></script>
 
