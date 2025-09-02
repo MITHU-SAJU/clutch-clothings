@@ -509,3 +509,61 @@ div.dataTables_wrapper div.dataTables_length select{
             font-weight: 500;
             color: #2575fc;
         }
+  
+.profile {
+  min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(-45deg, #003287, #0056b3, #00c6ff, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+}
+ 
+  @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Profile card */
+        .profile-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-card h4 {
+            font-weight: 700;
+            color: #003287;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-card {
+            border: none;
+            background: #f8f9fa;
+            border-radius: 10px;
+            font-weight: 500;
+        }
