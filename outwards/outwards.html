@@ -97,29 +97,51 @@
 
         <div class="container-fluid my-5">
             <div class="custom-box p-4">
-                <!-- Outward Form -->
                 <form id="outwardForm" class="row g-3">
                     <div class="col-12">
-                        <div class="border rounded-4 p-4 shadow-sm mb-4 bg-white text-center">
-                            <label class="fw-bold fs-5 mb-3 w-100 text-center">CUSTOMER</label>
+                        <div class="border rounded-4 p-4 shadow-sm mb-4 bg-light text-center">
+                            <div class="d-flex justify-content-center flex-wrap gap-4">
+                                <!-- Cash -->
+                                <button type="button" class="payment-btn" data-payment="cash">
+                                    <img src="../assests/images/cash-btn.jpeg" alt="Cash" class="payment-icon">
+                                    <span>Cash</span>
+                                </button>
 
-                            <div class="row g-2 justify-content-center">
-                                <div class="col-12 col-sm-8 col-md-6">
-                                    <select id="customer" class="form-select w-100" required
-                                        style="border-radius: 10px; border: 1px solid #ddd;">
-                                        <option value="" disabled selected>Select Customer</option>
-                                        <option value="customer1">CUSTOMER 1</option>
-                                        <option value="customer2">CUSTOMER 2</option>
-                                        <option value="customer3">CUSTOMER 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-sm-2 col-md-1 d-grid">
-                                    <!-- Add CUSTOMER Button -->
-                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                        data-bs-target="#addCustomerModal">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
+                                <!-- GPay -->
+                                <button type="button" class="payment-btn" data-payment="gpay">
+                                    <img src="../assests/images/gpay-btn.png" alt="GPay" class="payment-icon">
+                                    <span>GPay</span>
+                                </button>
+
+                                <!-- Credit -->
+                                <button type="button" class="payment-btn" data-payment="credit">
+                                    <img src="../assests/images/credit-btn.png" alt="Credit Card" class="payment-icon">
+                                    <span>Credit</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Customer (hidden by default) -->
+                    <div id="customerSection" class="d-none">
+                        <label class="fw-bold fs-5 mb-3 w-100 text-center">CUSTOMER</label>
+                        <div class="row g-2 justify-content-center">
+                            <div class="col-12 col-sm-8 col-md-6">
+                                <select id="customer" class="form-select w-100"
+                                    style="border-radius: 10px; border: 1px solid #ddd;">
+                                    <option value="" disabled selected>Select Customer</option>
+                                    <option value="customer1">CUSTOMER 1</option>
+                                    <option value="customer2">CUSTOMER 2</option>
+                                    <option value="customer3">CUSTOMER 3</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-2 col-md-1 d-grid">
+                                <!-- Add CUSTOMER Button -->
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                    data-bs-target="#addCustomerModal">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -198,7 +220,7 @@
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header bg-primary text-white">
+                    <div class="modal-header bg-custom text-white">
                         <h5 class="modal-title" id="addCustomerModalLabel">Add New Customer</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                     </div>
@@ -220,9 +242,7 @@
                                     placeholder="Enter 10-digit contact number">
                             </div>
                             <div class="text-center mt-3">
-                                <button type="submit" class="btn btn-success px-4 fw-bold">
-                                    Save Customer
-                                </button>
+                                <button type="submit" class="btn btn-success px-4 fw-bold">Save Customer</button>
                             </div>
                         </form>
                     </div>
@@ -231,89 +251,14 @@
         </div>
     </div>
 
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
     <script src="../assests/js/script.js"></script>
-
-    <script>
-        // Load existing data from localStorage
-        let outwardData = JSON.parse(localStorage.getItem("outwardData")) || [];
-
-        const outwardForm = document.getElementById("outwardForm");
-        const outwardTableBody = document.querySelector("#outwardTable tbody");
-        const grandTotalCell = document.getElementById("grandTotal");
-
-        // Function to render table
-        function renderTable() {
-            outwardTableBody.innerHTML = "";
-            let total = 0;
-            outwardData.forEach((entry, index) => {
-                const amount = entry.quantity * entry.rate;
-                total += amount;
-
-                outwardTableBody.innerHTML += `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${entry.product}</td>
-                    <td>${entry.quantity}</td>
-                    <td>${entry.rate}</td>
-                    <td>${amount}</td>
-                    <td>
-                        <button class="btn btn-sm btn-danger" onclick="deleteEntry(${index})">
-                            <i class="fas fa-trash"></i> Delete
-                        </button>
-                    </td>
-                </tr>`;
-            });
-            grandTotalCell.textContent = total;
-            localStorage.setItem("outwardData", JSON.stringify(outwardData));
-        }
-
-        // Add new outward entry
-        outwardForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const product = document.getElementById("product").value;
-            const quantity = parseFloat(document.getElementById("quantity").value);
-            const rate = parseFloat(document.getElementById("rate").value);
-
-            if (product && quantity && rate) {
-                outwardData.push({
-                    product,
-                    quantity,
-                    rate
-                });
-                renderTable();
-                outwardForm.reset();
-            }
-        });
-
-        // Delete entry
-        function deleteEntry(index) {
-            outwardData.splice(index, 1);
-            renderTable();
-        }
-
-        // Initial render
-        renderTable();
-
-        // Handle new customer form
-        document.getElementById("customerForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            const customerName = document.getElementById("customerName").value.trim();
-            if (customerName) {
-                const customerDropdown = document.getElementById("customer");
-                const newOption = document.createElement("option");
-                newOption.value = customerName.toLowerCase().replace(/\s+/g, '-');
-                newOption.textContent = customerName;
-                customerDropdown.appendChild(newOption);
-                customerDropdown.value = newOption.value;
-
-                const modal = bootstrap.Modal.getInstance(document.getElementById("addCustomerModal"));
-                modal.hide();
-                e.target.reset();
-            }
-        });
-    </script>
-
+    <script src="./outwards.js"></script>
 </body>
 
 </html>
