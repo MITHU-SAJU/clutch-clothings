@@ -113,44 +113,58 @@
                                     <span>GPay</span>
                                 </button>
 
+                                <!-- Cash + GPay -->
+                                <button type="button" class="payment-btn" data-payment="cash-gpay">
+                                    <img src="../assests/images/cash-gpay.jpeg" alt="Cash + GPay" class="payment-icon">
+                                    <span>Cash + GPay</span>
+                                </button>
+
                                 <!-- Credit -->
                                 <button type="button" class="payment-btn" data-payment="credit">
                                     <img src="../assests/images/credit-btn.png" alt="Credit Card" class="payment-icon">
                                     <span>Credit</span>
                                 </button>
                             </div>
-                        </div>
 
+
+
+                            <!-- Customer (hidden by default) -->
+                            <div id="customerSection" class="d-none">
+                                <label class="fw-bold fs-5 mt-5 mb-3 w-100 text-center">CUSTOMER</label>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-12 col-sm-10 col-md-8">
+                                        <div class="input-group">
+                                            <!-- Select Customer -->
+                                            <select id="customer"
+                                                class="form-select form-select-custom border-1 fw-semibold"
+                                                style="border-radius: 12px 0 0 12px; border-color: #ccc;">
+                                                <option value="" disabled selected>Select Customer</option>
+                                                <option value="customer1">CUSTOMER 1</option>
+                                                <option value="customer2">CUSTOMER 2</option>
+                                                <option value="customer3">CUSTOMER 3</option>
+                                            </select>
+
+                                            <!-- Add Customer Button -->
+                                            <button type="button" class="btn btn-outline-primary"
+                                                style="border-radius: 0 12px 12px 0;" data-bs-toggle="modal"
+                                                data-bs-target="#addCustomerModal">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Customer (hidden by default) -->
-                    <div id="customerSection" class="d-none">
-                        <label class="fw-bold fs-5 mb-3 w-100 text-center">CUSTOMER</label>
-                        <div class="row g-2 justify-content-center">
-                            <div class="col-12 col-sm-8 col-md-6">
-                                <select id="customer" class="form-select w-100"
-                                    style="border-radius: 10px; border: 1px solid #ddd;">
-                                    <option value="" disabled selected>Select Customer</option>
-                                    <option value="customer1">CUSTOMER 1</option>
-                                    <option value="customer2">CUSTOMER 2</option>
-                                    <option value="customer3">CUSTOMER 3</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-sm-2 col-md-1 d-grid">
-                                <!-- Add CUSTOMER Button -->
-                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                    data-bs-target="#addCustomerModal">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <!-- Product -->
+                    <!-- Product Select -->
                     <div class="col-md-4">
                         <label class="form-label">Product</label>
                         <select id="product" class="form-select" required>
-                            <option value="" disabled selected>Select Product</option>
                             <option value="Yarn Type A">Yarn Type A</option>
                             <option value="Yarn Type B">Yarn Type B</option>
                             <option value="Yarn Type C">Yarn Type C</option>
@@ -208,10 +222,11 @@
                     </table>
                 </div>
                 <div class="mt-4 text-center">
-                    <button type="button" class="btn btn-add px-5 rounded-3 shadow">
-                        Submit
-                    </button>
+                    <a href="./view-orders.html" class="btn btn-add px-5 rounded-3 shadow">
+                        View Order
+                    </a>
                 </div>
+
             </div>
         </div>
 
@@ -258,7 +273,24 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="../assests/js/script.js"></script>
+
+    <!-- Load Select2 auto search product -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script src="./outwards.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#product').select2({
+                tags: true, // ✅ allows entering new values
+                placeholder: "Select Product",
+                allowClear: true
+            });
+        });
+    </script>
+
 </body>
 
 </html>

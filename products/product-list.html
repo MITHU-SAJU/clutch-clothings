@@ -193,73 +193,75 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <!-- Scripts -->
-        <script src="../assests/js/script.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script>
-            // Initialize DataTable
-            $(document).ready(function () {
-                $('#productTable').DataTable({
-                    pageLength: 10,
-                    responsive: true
+    <!-- Scripts -->
+    <script src="../assests/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Initialize DataTable
+        $(document).ready(function () {
+            $('#productTable').DataTable({
+                pageLength: 10,
+                responsive: true
+            });
+        });
+
+        // Sample stock data
+        const stockData = {
+            "Yarn Type A": [{
+                    location: "Warehouse 1",
+                    quantity: 50
+                },
+                {
+                    location: "Warehouse 2",
+                    quantity: 70
+                }
+            ],
+            "Yarn Type B": [{
+                    location: "Warehouse 1",
+                    quantity: 25
+                },
+                {
+                    location: "Warehouse 3",
+                    quantity: 50
+                }
+            ]
+        };
+
+        // Handle stock cell clicks
+        document.addEventListener("DOMContentLoaded", function () {
+            const stockCells = document.querySelectorAll("td[data-bs-toggle='modal']");
+            const modalProductName = document.getElementById("modalProductName");
+            const modalStockBody = document.getElementById("modalStockBody");
+
+            stockCells.forEach(cell => {
+                cell.addEventListener("click", () => {
+                    const product = cell.getAttribute("data-product");
+                    modalProductName.textContent = `Product: ${product}`;
+                    modalStockBody.innerHTML = "";
+
+                    if (stockData[product]) {
+                        stockData[product].forEach(item => {
+                            const tr = document.createElement("tr");
+                            tr.innerHTML =
+                                `<td>${item.location}</td><td>${item.quantity}</td>`;
+                            modalStockBody.appendChild(tr);
+                        });
+                    } else {
+                        modalStockBody.innerHTML =
+                            `<tr><td colspan="2">No stock data available</td></tr>`;
+                    }
                 });
             });
-
-            // Sample stock data
-            const stockData = {
-                "Yarn Type A": [{
-                        location: "Warehouse 1",
-                        quantity: 50
-                    },
-                    {
-                        location: "Warehouse 2",
-                        quantity: 70
-                    }
-                ],
-                "Yarn Type B": [{
-                        location: "Warehouse 1",
-                        quantity: 25
-                    },
-                    {
-                        location: "Warehouse 3",
-                        quantity: 50
-                    }
-                ]
-            };
-
-            // Handle stock cell clicks
-            document.addEventListener("DOMContentLoaded", function () {
-                const stockCells = document.querySelectorAll("td[data-bs-toggle='modal']");
-                const modalProductName = document.getElementById("modalProductName");
-                const modalStockBody = document.getElementById("modalStockBody");
-
-                stockCells.forEach(cell => {
-                    cell.addEventListener("click", () => {
-                        const product = cell.getAttribute("data-product");
-                        modalProductName.textContent = `Product: ${product}`;
-                        modalStockBody.innerHTML = "";
-
-                        if (stockData[product]) {
-                            stockData[product].forEach(item => {
-                                const tr = document.createElement("tr");
-                                tr.innerHTML =
-                                    `<td>${item.location}</td><td>${item.quantity}</td>`;
-                                modalStockBody.appendChild(tr);
-                            });
-                        } else {
-                            modalStockBody.innerHTML =
-                                `<tr><td colspan="2">No stock data available</td></tr>`;
-                        }
-                    });
-                });
-            });
-        </script>
+        });
+    </script>
 </body>
 
 </html>

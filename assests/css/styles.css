@@ -620,4 +620,49 @@ div.dataTables_wrapper div.dataTables_length select{
 }
 
 
- 
+ /* Bigger height for select */
+.form-select-custom {
+  height: 50px;          /* adjust as needed */
+  font-size: 1rem;       /* slightly larger text */
+  padding: 10px 15px;    /* more padding inside */
+  border-radius: 12px;   /* keep it curved */
+}
+
+/* Style Select2 like Bootstrap input */
+.select2-container .select2-selection--single {
+    height: 38px;                     /* match Bootstrap input height */
+    border: 1px solid #ccc;        /* clean gray border */
+    border-radius: 6px;          /* smooth rounded corners */
+    padding: 6px 12px;                /* proper spacing */
+    background-color: #f9f9f9;           /* white background */
+    display: flex;                    /* align text + arrow properly */
+    align-items: center;
+}
+.select2-container--default .select2-selection--single {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    height: 34px !important;
+}
+/* Text inside */
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 20px !important;
+    font-size: 13px;               /* match Bootstrap font size */
+    color: #212529;
+}
+
+/* Dropdown arrow */
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 100%;
+    right: 8px;
+    top:6px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__clear {
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+    height: 23px !important;
+    margin-right: 20px;
+    padding-right: 0px;
+}
