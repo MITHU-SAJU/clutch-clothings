@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="../assests/css/styles.css">
+</head>
+
+<body>
+    <!-- Sidebar Toggle Button -->
+    <input type="checkbox" id="checkbox" hidden>
+    <label for="checkbox" class="toggle-btn" id="toggleBtn">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </label>
+
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <!-- <img src="./assets/logo.png" alt="Logo" /> -->
+        </div>
+        <ul>
+            <!-- Dashboard -->
+            <li>
+                <a href="../index.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Inwards -->
+            <li>
+                <a href="../inwards/inward-list.html">
+                    <i class="fas fa-arrow-down"></i>
+                    <span>Inwards</span>
+                </a>
+            </li>
+
+            <!-- Outwards -->
+            <li>
+                <a href="../outwards/outward-list.html">
+                    <i class="fas fa-arrow-up"></i>
+                    <span>Outwards</span>
+                </a>
+            </li>
+
+            <!-- Products -->
+            <li>
+                <a href="../products/product-list.html">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="./stock.html">
+                    <i class="fas fa-boxes"></i>
+                    <span>Stock</span>
+                </a>
+            </li>
+
+            <!-- Customers -->
+            <li>
+                <a href="../customer/customer-list.html">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                </a>
+            </li>
+
+            <!-- Suppliers -->
+            <li>
+                <a href="./supplier-list.html">
+                    <i class="fas fa-truck"></i>
+                    <span>Suppliers</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="../user-creation/user-list.html">
+                    <i class="fas fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <div id="mainHeader"
+            class="d-flex justify-content-between align-items-center px-4 py-2 bg-white text-dark shadow-sm w-100">
+            <h4 class="fw-bold mb-0">Stock List</h4>
+            <div class="d-flex align-items-center gap-3">
+                <i class="bi bi-bell-fill fs-4" role="button" title="Notifications"></i>
+                <i class="bi bi-person-circle fs-4" role="button" title="Profile"></i>
+            </div>
+        </div>
+        <div class="container-fluid my-5">
+            <div class="custom-box p-4">
+                <!-- Filters -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row g-3 align-items-end ">
+                            <!-- From Date -->
+                            <div class="col-md-2">
+                                <label class="form-label ">From Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+
+                            <!-- To Date -->
+                            <div class="col-md-2">
+                                <label class="form-label">To Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+
+
+
+                            <!-- Filter by Color -->
+                            <div class="col-md-2">
+                                <label class="form-label ">Filter by Color</label>
+                                <select class="form-select">
+                                    <option value="">All Colors</option>
+                                    <option>Red</option>
+                                    <option>Blue</option>
+                                    <option>Green</option>
+                                    <option>Yellow</option>
+                                    <option>Black</option>
+                                    <option>White</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label ">Filter by Yarn Type</label>
+                                <select class="form-select">
+                                    <option value="">All Types</option>
+                                    <option>2 Ply</option>
+                                    <option>3 Ply</option>
+                                    <option>Poly/Nylon</option>
+                                    <option>2 Ply Spun</option>
+                                </select>
+                            </div>
+
+                            <!-- General Filter -->
+                            <div class="col-md-2">
+                                <label class="form-label ">Filter</label>
+                                <select class="form-select">
+                                    <option>All</option>
+                                    <option>Today</option>
+                                    <option>Last 3 Days</option>
+                                    <option>Last 7 Days</option>
+                                    <option>Custom</option>
+                                </select>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="col-md-2 d-grid gap-2">
+                                <button class="btn btn-add w-100 mt-3">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Stock Table -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover align-middle">
+                                <thead class="table-dark text-center">
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Item Code</th>
+                                        <th>Item Category</th>
+                                        <th>Color</th>
+                                        <th>Stock</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <td>1</td>
+                                        <td>ITM001</td>
+                                        <td>Yarn</td>
+                                        <td>Red</td>
+                                        <td>30</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-warning" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>ITM002</td>
+                                        <td>Fabric</td>
+                                        <td>Blue</td>
+                                        <td>40</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info" title="View">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-warning" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-danger" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                    <!-- Add More Rows Dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <button class="btn btn-sm btn-danger">Download PDF</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assests/js/script.js"></script>
+</body>
+
+</html>
