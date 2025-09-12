@@ -146,7 +146,36 @@
   /* 📱 Card Style Tables (Normal + DataTables) */
 @media (max-width: 768px) {
 
- 
+ /* 🔹 Neat & Centered DataTable Filter */
+div.dataTables_wrapper div.dataTables_filter {
+  text-align: center;        /* Center everything */
+  width: 100% !important;    
+  margin: 10px auto;         /* Space around */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* Center label + input */
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0 auto;
+  width: auto;               /* Only as wide as needed */
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+  margin-top: 5px;
+  width: 220px !important;   /* Fixed neat size */
+  max-width: 90%;            /* Shrink on very small screens */
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  font-size: 13px;
+  box-sizing: border-box;
+  text-align: center;        /* Optional: center text inside */
+}
 
 
   /* Payment buttons (Outward only) */
