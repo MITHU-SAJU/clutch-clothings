@@ -98,14 +98,30 @@
             </div>
         </div>
 
-
         <div class="container-fluid my-5">
             <div class="custom-box p-4">
-                <div class="d-flex justify-content-end align-items-center mb-4">
-                    <a href="./inwards.html" class="btn btn-add">
+
+                <!-- Mobile layout -->
+                <div class="d-flex d-md-none flex-column mb-3">
+                    <!-- Row 1: Show entries + Add button -->
+                    <div class="d-flex justify-content-between align-items-center mb-2 w-100">
+                        <div id="inwardsTable_length"></div>
+                        <a href="inwards.html" class="btn btn-add btn-sm">
+                            <i class="bi bi-plus-circle me-1"></i> Add Inwards
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Desktop / Tablet layout -->
+                <div class="d-none d-md-flex justify-content-between align-items-center mb-3 w-100">
+                    <div id="inwardsTable_length"></div>
+                    <div id="inwardsTable_filter"></div>
+                    <a href="./inwards.html" class="btn btn-add ms-2">
                         <i class="bi bi-plus-circle me-1"></i> Add Inwards
                     </a>
                 </div>
+
+                <!-- Table -->
                 <div class="table-responsive">
                     <table id="inwardsTable" class="table table-hover align-middle">
                         <thead class="table-primary">
@@ -126,52 +142,23 @@
                                 <td>Kg</td>
                                 <td>10000</td>
                                 <td class="text-center">
-                                    <!-- View -->
                                     <a href="./view-inwards.html" class="btn btn-sm btn-info me-1" title="View">
                                         <i class="bi bi-eye"></i>
                                     </a>
-
-                                    <!-- Edit -->
                                     <a href="edit-page.html?id=123" class="btn btn-sm btn-warning me-1" title="Edit">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-
-                                    <!-- Delete -->
                                     <a href="delete-page.html?id=123" class="btn btn-sm btn-danger" title="Delete">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>
-
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jane Smith</td>
-                                <td>20</td>
-                                <td>Kg</td>
-                                <td>200000</td>
-                                <td class="text-center">
-                                    <!-- View -->
-                                    <a href="./view-inwards.html" class="btn btn-sm btn-info me-1" title="View">
-                                        <i class="bi bi-eye"></i>
-                                    </a>
-
-                                    <!-- Edit -->
-                                    <a href="edit-page.html?id=123" class="btn btn-sm btn-warning me-1" title="Edit">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-
-                                    <!-- Delete -->
-                                    <a href="delete-page.html?id=123" class="btn btn-sm btn-danger" title="Delete">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
-
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -185,8 +172,9 @@
                 pageLength: 10,
                 responsive: true,
                 language: {
-                    search: "Search:",
-                    lengthMenu: "Show _MENU_ entries per page",
+                    search: "",
+                    searchPlaceholder: "Search...",
+                    lengthMenu: "Show _MENU_ ",
                     info: "Showing _START_ to _END_ of _TOTAL_ entries",
                     paginate: {
                         first: "First",

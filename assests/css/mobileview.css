@@ -1,44 +1,42 @@
-/* 🔹 Mobile Sidebar - Toggle + 2-Column Cards */
+/* 📱 Mobile Styles */
 @media (max-width: 768px) {
-.toggle-btn {
-  width: 35px;
-  height: 30px;
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  z-index: 1501;   /* higher than sidebar */
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 5px;
-  background: #fff;         /* make it visible on white sidebar */
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
 
+  /* 🔹 Sidebar Toggle */
+  .toggle-btn {
+    width: 35px;
+    height: 30px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1501;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
 
+  /* 🔹 Sidebar */
   .sidebar {
     position: fixed;
     top: 0;
-    left: -100%;   /* Hidden by default */
-    width: 100%;   /* Full width */
+    left: -100%;
+    width: 100%;
     height: 100%;
     background: #fff;
     padding: 1.2rem;
     border-radius: 0 20px 20px 0;
-    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 20px rgba(0,0,0,0.1);
     transition: left 0.4s ease;
     z-index: 1200;
     overflow-y: auto;
   }
+  .sidebar.active { left: 0; }
 
-  /* When active (after toggle) */
-  .sidebar.active {
-    left: 0;
-  }
-
-  /* 2-column grid */
+  /* 2-column grid menu */
   .sidebar ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -46,16 +44,10 @@
     margin: 0;
     padding: 0;
   }
-
-  .sidebar ul li {
-    list-style: none;
-  }
-
-  /* Card-style menu links */
+  .sidebar ul li { list-style: none; }
   .sidebar ul li a {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 16px 12px;
     background: #F9F9DB;
@@ -63,40 +55,24 @@
     box-shadow: 0 3px 10px rgba(0,0,0,0.05);
     font-size: 14px;
     font-weight: 500;
-    text-align: center;
     color: #333;
     transition: all 0.3s ease;
-    margin-bottom: 4rem;
-        height: 100%;
+    height: 100%;
   }
-
   .sidebar ul li a i {
     font-size: 40px;
     margin-bottom: 6px;
     color: #003287;
   }
-
-  .sidebar ul li a span {
-    font-size: 25px;
-  }
-
-  /* Hover effect */
+  .sidebar ul li a span { font-size: 25px; }
   .sidebar ul li a:hover {
     background: #003287;
     color: #fff;
     transform: translateY(-4px);
   }
+  .sidebar ul li a:hover i { color: #fff; }
 
-  .sidebar ul li a:hover i {
-    color: #fff;
-  }
-}
-
-
-
- 
-
-  /* Payment buttons (Outward only) */
+  /* 🔹 Payment buttons */
   .payment-btn {
     display: flex;
     flex-direction: column;
@@ -113,9 +89,7 @@
     font-weight: 600;
     color: #444;
   }
-  .payment-btn:hover {
-    background: #f1f5ff;
-  }
+  .payment-btn:hover { background: #f1f5ff; }
   .payment-btn.active {
     background: #0d6efd;
     color: #fff;
@@ -128,101 +102,41 @@
     border-radius: 6px;
   }
 
-  /* Modal (both Inward + Outward) */
+  /* 🔹 Modal */
   .modal-content {
     border-radius: 20px;
     padding: 1rem;
   }
-  .modal-header {
-    border-radius: 16px 16px 0 0;
-  }
+  .modal-header { border-radius: 16px 16px 0 0; }
   .modal-body input {
     border-radius: 14px;
     padding: 12px;
     background: #fafafa;
   }
 
-/* 📱 Card Style Tables (Normal + DataTables) */
-@media (max-width: 768px) {
-
-  /* 🔹 Neat & Centered DataTable Filter */
-  div.dataTables_wrapper div.dataTables_filter {
-    text-align: center;
-    width: 100% !important;
-    margin: 10px auto;
-    padding: 0;
-    box-sizing: border-box;
+  /* 🔹 DataTables controls in one row */
+  div.dataTables_wrapper .row:first-child {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.5rem;
   }
-
-  div.dataTables_wrapper div.dataTables_filter label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 400;
-    font-size: 13px;
-    margin: 0 auto;
-    width: auto;
+  div.dataTables_wrapper .row:first-child > div {
+    flex: unset !important;
+    width: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
-
+  div.dataTables_wrapper div.dataTables_length select {
+    width: 70px !important;
+  }
   div.dataTables_wrapper div.dataTables_filter input {
-    margin-top: 5px;
-    width: 220px !important;
-    max-width: 90%;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    padding: 6px 10px;
-    font-size: 13px;
-    box-sizing: border-box;
-    text-align: center;
+    width: 230px !important;
+    padding: 0.5rem;
   }
 
-  /* 🔹 Payment buttons (Outward only) */
-  .payment-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 95px;
-    height: 90px;
-    border-radius: 14px;
-    border: 1px solid #eee;
-    background: #f9f9f9;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #444;
-  }
-  .payment-btn:hover {
-    background: #f1f5ff;
-  }
-  .payment-btn.active {
-    background: #0d6efd;
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(13,110,253,0.3);
-  }
-  .payment-btn .payment-icon {
-    width: 34px;
-    height: 34px;
-    margin-bottom: 5px;
-    border-radius: 6px;
-  }
-
-  /* 🔹 Modal (both Inward + Outward) */
-  .modal-content {
-    border-radius: 20px;
-    padding: 1rem;
-  }
-  .modal-header {
-    border-radius: 16px 16px 0 0;
-  }
-  .modal-body input {
-    border-radius: 14px;
-    padding: 12px;
-    background: #fafafa;
-  }
-
-  /* 🔹 General table reset */
+  /* 🔹 Card-style tables */
   table,
   table.dataTable {
     border: 0;
@@ -231,14 +145,8 @@
     border-spacing: 0 12px;
     background: transparent;
   }
-
-  /* Hide headers */
   table thead,
-  table.dataTable thead {
-    display: none;
-  }
-
-  /* Each row becomes a card */
+  table.dataTable thead { display: none; }
   table tbody tr,
   table.dataTable tbody tr {
     display: block;
@@ -246,10 +154,8 @@
     border-radius: 12px;
     padding: 12px 14px;
     margin-bottom: 14px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* lighter shadow */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
-
-  /* Cells stacked with label + value */
   table tbody td,
   table.dataTable tbody td {
     display: flex;
@@ -259,25 +165,9 @@
     font-size: 14px;
     border: none;
     border-bottom: 1px dashed #e5e7eb;
-    text-align: left; /* default for text */
-    font-weight: 500;
     color: #111827;
   }
-
-  /* Numeric alignment helper */
-  table tbody td.numeric {
-    text-align: right;
-  }
-
-  /* Remove last border */
-  table tbody td:last-child,
-  table.dataTable tbody td:last-child {
-    border-bottom: none;
-  }
-
-  /* Show header text from data-label */
-  table tbody td::before,
-  table.dataTable tbody td::before {
+  table tbody td::before {
     content: attr(data-label);
     font-weight: 600;
     color: #374151;
@@ -285,27 +175,20 @@
     text-align: left;
     margin-right: 10px;
   }
-
-  /* Action buttons aligned */
-  table tbody td:last-child,
-  table.dataTable tbody td:last-child {
+  table tbody td:last-child {
+    border-bottom: none;
     display: flex;
     justify-content: flex-end;
     gap: 8px;
   }
 
-  /* 🔹 Table footers (Grand Total style) */
+  /* 🔹 Table footers */
   table tfoot,
-  table.dataTable tfoot {
-    display: block;
-    margin-top: 10px;
-  }
-
+  table.dataTable tfoot { display: block; margin-top: 10px; }
   table tfoot tr,
   table.dataTable tfoot tr {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     background: #f0f4ff;
     border-radius: 12px;
     padding: 12px 16px;
@@ -313,17 +196,23 @@
     color: #003287;
     box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   }
+  table tfoot td { border: none !important; font-size: 15px; }
 
-  table tfoot td,
-  table.dataTable tfoot td {
-    border: none !important;
-    font-size: 15px;
-    padding: 0;
+  /* 🔹 Small UI tweaks */
+  form label { display: none !important; }
+  h4.fw-bold {
+    text-align: center !important;
+    font-size: 25px;
+    display: block;
+    width: 100%;
   }
-
-  table tfoot td[colspan],
-  table.dataTable tfoot td[colspan] {
-    flex: 1;
-    text-align: left;
+  .btn-add {
+    padding: 4px 8px;
+    white-space: nowrap;
+        padding: 4px 8px;
+        font-size: 16px;
+        white-space: nowrap;
+        border-radius: 11px;
+        width: 100%;
   }
 }
