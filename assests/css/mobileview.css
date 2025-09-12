@@ -1,0 +1,329 @@
+/* 🔹 Mobile Sidebar - Toggle + 2-Column Cards */
+@media (max-width: 768px) {
+.toggle-btn {
+  width: 35px;
+  height: 30px;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1501;   /* higher than sidebar */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  background: #fff;         /* make it visible on white sidebar */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;   /* Hidden by default */
+    width: 100%;   /* Full width */
+    height: 100%;
+    background: #fff;
+    padding: 1.2rem;
+    border-radius: 0 20px 20px 0;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+    transition: left 0.4s ease;
+    z-index: 1200;
+    overflow-y: auto;
+  }
+
+  /* When active (after toggle) */
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* 2-column grid */
+  .sidebar ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar ul li {
+    list-style: none;
+  }
+
+  /* Card-style menu links */
+  .sidebar ul li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 12px;
+    background: #F9F9DB;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: #333;
+    transition: all 0.3s ease;
+    margin-bottom: 4rem;
+        height: 100%;
+  }
+
+  .sidebar ul li a i {
+    font-size: 40px;
+    margin-bottom: 6px;
+    color: #003287;
+  }
+
+  .sidebar ul li a span {
+    font-size: 25px;
+  }
+
+  /* Hover effect */
+  .sidebar ul li a:hover {
+    background: #003287;
+    color: #fff;
+    transform: translateY(-4px);
+  }
+
+  .sidebar ul li a:hover i {
+    color: #fff;
+  }
+}
+
+
+
+  /* Global Submit/View buttons */
+  .btn-add {
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 14px 40px;
+    background: linear-gradient(135deg, #003287, #001f5c);
+    color: #fff;
+    border: none;
+    box-shadow: 0 6px 16px rgba(0,50,135,0.3);
+    transition: 0.3s;
+  }
+  .btn-add:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Payment buttons (Outward only) */
+  .payment-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95px;
+    height: 90px;
+    border-radius: 14px;
+    border: 1px solid #eee;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+  }
+  .payment-btn:hover {
+    background: #f1f5ff;
+  }
+  .payment-btn.active {
+    background: #0d6efd;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(13,110,253,0.3);
+  }
+  .payment-btn .payment-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+  }
+
+  /* Modal (both Inward + Outward) */
+  .modal-content {
+    border-radius: 20px;
+    padding: 1rem;
+  }
+  .modal-header {
+    border-radius: 16px 16px 0 0;
+  }
+  .modal-body input {
+    border-radius: 14px;
+    padding: 12px;
+    background: #fafafa;
+  }
+
+
+  /* 📱 Card Style Tables (Normal + DataTables) */
+@media (max-width: 768px) {
+
+ 
+ .btn-add {
+        border-radius: 50px;
+        font-size: 14px;
+        padding: 9px 16px;
+        background: linear-gradient(135deg, #003287, #001f5c);
+        color: #fff;
+        border: none;
+        box-shadow: 0 6px 16px rgba(0, 50, 135, 0.3);
+        transition: 0.3s;
+    }
+  .btn-add:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Payment buttons (Outward only) */
+  .payment-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 95px;
+    height: 90px;
+    border-radius: 14px;
+    border: 1px solid #eee;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+  }
+  .payment-btn:hover {
+    background: #f1f5ff;
+  }
+  .payment-btn.active {
+    background: #0d6efd;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(13,110,253,0.3);
+  }
+  .payment-btn .payment-icon {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+  }
+
+  /* Modal (both Inward + Outward) */
+  .modal-content {
+    border-radius: 20px;
+    padding: 1rem;
+  }
+  .modal-header {
+    border-radius: 16px 16px 0 0;
+  }
+  .modal-body input {
+    border-radius: 14px;
+    padding: 12px;
+    background: #fafafa;
+  }
+
+
+  /* General table reset */
+  table,
+  table.dataTable {
+    border: 0;
+    width: 100% !important;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    background: transparent;
+  }
+
+  /* Hide headers */
+  table thead,
+  table.dataTable thead {
+    display: none;
+  }
+
+  /* Each row becomes a card */
+  table tbody tr,
+  table.dataTable tbody tr {
+    display: block;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Cells stacked with label + value */
+  table tbody td,
+  table.dataTable tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px dashed #e5e7eb;
+  }
+
+  /* Remove last border */
+  table tbody td:last-child,
+  table.dataTable tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* Show header text from data-label */
+  table tbody td::before,
+  table.dataTable tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #374151;
+    flex: 1;
+    text-align: left;
+    margin-right: 10px;
+  }
+
+  /* Cell values */
+  table tbody td,
+  table.dataTable tbody td {
+    text-align: right;
+    font-weight: 500;
+    color: #111827;
+  }
+
+  /* Action buttons aligned */
+  table tbody td:last-child,
+  table.dataTable tbody td:last-child {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+
+  /* Table footers (Grand Total style) */
+  table tfoot,
+  table.dataTable tfoot {
+    display: block;
+    margin-top: 10px;
+  }
+
+  table tfoot tr,
+  table.dataTable tfoot tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f4ff;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-weight: 700;
+    color: #003287;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  }
+
+  table tfoot td,
+  table.dataTable tfoot td {
+    border: none !important;
+    font-size: 15px;
+    padding: 0;
+  }
+
+  table tfoot td[colspan],
+  table.dataTable tfoot td[colspan] {
+    flex: 1;
+    text-align: left;
+  }
+}
+

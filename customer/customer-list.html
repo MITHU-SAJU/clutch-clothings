@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="../assests/css/styles.css">
+    <link rel="stylesheet" href="../assests/css/mobileview.css">
 </head>
 
 <body>
@@ -121,7 +122,7 @@
                                 <th>Customer Name</th>
                                 <th>Phone</th>
                                 <th>Email</th>
-                                <th class="text-center">Actions</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -130,7 +131,7 @@
                                 <td>John Doe</td>
                                 <td>+91 9876543210</td>
                                 <td>john@example.com</td>
-                                <td class="text-center">
+                                <td>
                                     <button class="btn btn-sm btn-warning me-2">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
@@ -184,6 +185,36 @@
                         previous: "Previous"
                     }
                 }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Loop through all tables
+            document.querySelectorAll("table").forEach(function (table) {
+                const headers = [];
+                // Collect <th> text
+                table.querySelectorAll("thead th").forEach(function (th) {
+                    headers.push(th.innerText.trim());
+                });
+
+                // Apply as data-label for each <td>
+                table.querySelectorAll("tbody tr").forEach(function (row) {
+                    row.querySelectorAll("td").forEach(function (td, i) {
+                        if (headers[i]) {
+                            td.setAttribute("data-label", headers[i]);
+                        }
+                    });
+                });
+
+                // Do the same for <tfoot> if needed
+                table.querySelectorAll("tfoot tr").forEach(function (row) {
+                    row.querySelectorAll("td").forEach(function (td, i) {
+                        if (headers[i] && !td.hasAttribute("data-label")) {
+                            td.setAttribute("data-label", headers[i]);
+                        }
+                    });
+                });
             });
         });
     </script>

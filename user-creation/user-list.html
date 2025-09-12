@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="../assests/css/styles.css">
+    <link rel="stylesheet" href="../assests/css/mobileview.css">
 </head>
 
 <body>
@@ -203,6 +204,36 @@
                         previous: "Previous"
                     }
                 }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Loop through all tables
+            document.querySelectorAll("table").forEach(function (table) {
+                const headers = [];
+                // Collect <th> text
+                table.querySelectorAll("thead th").forEach(function (th) {
+                    headers.push(th.innerText.trim());
+                });
+
+                // Apply as data-label for each <td>
+                table.querySelectorAll("tbody tr").forEach(function (row) {
+                    row.querySelectorAll("td").forEach(function (td, i) {
+                        if (headers[i]) {
+                            td.setAttribute("data-label", headers[i]);
+                        }
+                    });
+                });
+
+                // Do the same for <tfoot> if needed
+                table.querySelectorAll("tfoot tr").forEach(function (row) {
+                    row.querySelectorAll("td").forEach(function (td, i) {
+                        if (headers[i] && !td.hasAttribute("data-label")) {
+                            td.setAttribute("data-label", headers[i]);
+                        }
+                    });
+                });
             });
         });
     </script>

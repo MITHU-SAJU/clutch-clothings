@@ -74,3 +74,59 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+$(document).ready(function () {
+    let tables = $("table.dataTable");
+
+    tables.each(function () {
+        let table = $(this);
+        let headers = [];
+
+        // Get column headers text
+        table.find("thead th").each(function (i, th) {
+            headers.push($(th).text().trim());
+        });
+
+        // On every table draw, update td with data-label
+        table.on("draw.dt", function () {
+            table.find("tbody tr").each(function () {
+                $(this).find("td").each(function (i, td) {
+                    $(td).attr("data-label", headers[i] || "");
+                });
+            });
+        });
+
+        // Run once on load
+        table.trigger("draw.dt");
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Loop through all tables
+    document.querySelectorAll("table").forEach(function (table) {
+        const headers = [];
+        // Collect <th> text
+        table.querySelectorAll("thead th").forEach(function (th) {
+            headers.push(th.innerText.trim());
+        });
+
+        // Apply as data-label for each <td>
+        table.querySelectorAll("tbody tr").forEach(function (row) {
+            row.querySelectorAll("td").forEach(function (td, i) {
+                if (headers[i]) {
+                    td.setAttribute("data-label", headers[i]);
+                }
+            });
+        });
+
+        // Do the same for <tfoot> if needed
+        table.querySelectorAll("tfoot tr").forEach(function (row) {
+            row.querySelectorAll("td").forEach(function (td, i) {
+                if (headers[i] && !td.hasAttribute("data-label")) {
+                    td.setAttribute("data-label", headers[i]);
+                }
+            });
+        });
+    });
+});
+

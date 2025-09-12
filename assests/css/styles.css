@@ -7,17 +7,26 @@ body{
 
 
 .sidebar-logo {
-  background-image: url(./assets/images/logo.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  width: 50%;     /* Set desired width */
-  height: 100px;    /* Set desired height */
-  display: block;
-  margin-left: 5rem;
-  margin-top: -2rem;
-   /* Center it if needed */
+  background: none;
+  position: relative;
+  width: 50%;
+  height: 100px;
+  margin-left: 7.2rem;
+  margin-top: -1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.sidebar-logo::before {
+  content: "SP Textiles";   /* 🔹 Your text here */
+  font-size: 24px;
+  font-weight: 700;
+  color: #003287;
+  
+  text-align: center;
+}
+
 
 .sidebar {
   width: 250px;
@@ -622,8 +631,8 @@ div.dataTables_wrapper div.dataTables_length select{
 
  /* Bigger height for select */
 .form-select-custom {
-  height: 50px;          /* adjust as needed */
-  font-size: 1rem;       /* slightly larger text */
+  height: 70px;          /* adjust as needed */
+  font-size: 2rem;       /* slightly larger text */
   padding: 10px 15px;    /* more padding inside */
   border-radius: 12px;   /* keep it curved */
 }

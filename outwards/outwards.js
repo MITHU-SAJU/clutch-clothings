@@ -19,6 +19,7 @@ function renderTable() {
         <td>${index + 1}</td>
         <td>${entry.product}</td>
         <td>${entry.quantity}</td>
+         <td>${entry.uom}</td>
         <td>${entry.rate}</td>
         <td>${amount}</td>
         <td>
@@ -38,10 +39,11 @@ outwardForm.addEventListener("submit", function (e) {
     e.preventDefault();
     const product = document.getElementById("product").value;
     const quantity = parseFloat(document.getElementById("quantity").value);
+    const uom = document.getElementById("uom").value;
     const rate = parseFloat(document.getElementById("rate").value);
 
     if (product && quantity && rate) {
-        outwardData.push({ product, quantity, rate });
+        outwardData.push({ product, quantity, uom, rate });
         renderTable();
         outwardForm.reset();
     }
@@ -93,6 +95,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 customerSection.classList.add("d-none");
                 customerSelect.removeAttribute("required");
                 customerSelect.value = "";
+            }
+        });
+    });
+});
+
+
+document.querySelectorAll("table").forEach(function (table) {
+    const headers = Array.from(table.querySelectorAll("thead th")).map(th => th.innerText.trim());
+    table.querySelectorAll("tbody tr").forEach(function (row) {
+        row.querySelectorAll("td").forEach(function (cell, i) {
+            if (headers[i]) {
+                cell.setAttribute("data-label", headers[i]);
             }
         });
     });

@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="../assests/css/styles.css">
+    <link rel="stylesheet" href="../assests/css/mobileview.css">
 </head>
 
 <body>
@@ -140,7 +141,7 @@
                             <div id="customerSection" class="d-none">
                                 <label class="fw-bold fs-5 mt-5 mb-3 w-100 text-center">CUSTOMER</label>
 
-                                <div class="row justify-content-center">
+                                <div class="row g-2 justify-content-center">
                                     <div class="col-12 col-sm-10 col-md-8">
                                         <div class="input-group">
                                             <!-- Select Customer -->
@@ -154,11 +155,13 @@
                                             </select>
 
                                             <!-- Add Customer Button -->
-                                            <button type="button" class="btn btn-outline-primary"
-                                                style="border-radius: 0 12px 12px 0;" data-bs-toggle="modal"
-                                                data-bs-target="#addCustomerModal">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
+                                            <div class="col-12 col-sm-2 col-md-1 d-grid">
+                                                <!-- Add Supplier Button -->
+                                                <button type="button" class="btn btn-outline-primary"
+                                                    data-bs-toggle="modal" data-bs-target="#addCustomerModal">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -170,7 +173,7 @@
 
                     <!-- Product -->
                     <!-- Product Select -->
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label class="form-label">Product</label>
                         <select id="product" class="form-select" required>
                             <option value="Yarn Type A">Yarn Type A</option>
@@ -180,13 +183,18 @@
                     </div>
 
                     <!-- Quantity -->
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label class="form-label">Quantity</label>
                         <input type="number" id="quantity" class="form-control" placeholder="Enter quantity" required>
                     </div>
 
+                    <div class="col-md-2">
+                        <label class="form-label">UOM</label>
+                        <input type="text" id="uom" class="form-control" placeholder="Enter UOM" required>
+                    </div>
+
                     <!-- Rate -->
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <label class="form-label">Rate</label>
                         <input type="number" id="rate" class="form-control" placeholder="Enter rate" required>
                     </div>
@@ -212,6 +220,7 @@
                                 <th>S.No</th>
                                 <th>Product</th>
                                 <th>Quantity</th>
+                                <th>Uom</th>
                                 <th>Rate</th>
                                 <th>Amount</th>
                                 <th>Action</th>
@@ -222,7 +231,7 @@
                         </tbody>
                         <tfoot>
                             <tr class="table-secondary fw-bold">
-                                <td colspan="4" class="text-end">Grand Total</td>
+                                <td colspan="5" class="text-end">Grand Total</td>
                                 <td id="grandTotal">0</td>
                                 <td></td>
                             </tr>
@@ -249,16 +258,18 @@
                     </div>
                     <div class="modal-body">
                         <form id="customerForm">
-                            <div class="mb-3">
-                                <label class="form-label">Customer Name*</label>
-                                <input type="text" id="customerName" class="form-control"
-                                    placeholder="Enter customer name" required>
-                            </div>
+
                             <div class="mb-3">
                                 <label class="form-label">Company Name</label>
                                 <input type="text" id="companyName" class="form-control"
                                     placeholder="Enter company name">
                             </div>
+                            <div class="mb-3">
+                                <label class="form-label">Customer Name*</label>
+                                <input type="text" id="customerName" class="form-control"
+                                    placeholder="Enter customer name" required>
+                            </div>
+
                             <div class="mb-3">
                                 <label class="form-label">Contact Number</label>
                                 <input type="tel" id="contactNumber" class="form-control" pattern="[0-9]{10}"
@@ -295,6 +306,37 @@
                 tags: true, // ✅ allows entering new values
                 placeholder: "Select Product",
                 allowClear: true
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Loop through all tables
+            document.querySelectorAll("table").forEach(function (table) {
+                const headers = [];
+                // Collect <th> text
+                table.querySelectorAll("thead th").forEach(function (th) {
+                    headers.push(th.innerText.trim());
+                });
+
+                // Apply as data-label for each <td>
+                table.querySelectorAll("tbody tr").forEach(function (row) {
+                    row.querySelectorAll("td").forEach(function (td, i) {
+                        if (headers[i]) {
+                            td.setAttribute("data-label", headers[i]);
+                        }
+                    });
+                });
+
+                // Do the same for <tfoot> if needed
+                table.querySelectorAll("tfoot tr").forEach(function (row) {
+                    row.querySelectorAll("td").forEach(function (td, i) {
+                        if (headers[i] && !td.hasAttribute("data-label")) {
+                            td.setAttribute("data-label", headers[i]);
+                        }
+                    });
+                });
             });
         });
     </script>
