@@ -9,10 +9,9 @@ body{
 .sidebar-logo {
   background: none;
   position: relative;
-  width: 50%;
-  height: 100px;
-  margin-left: 7.2rem;
-  margin-top: -1.5rem;
+  width: 100%;              /* Full width for flexibility */
+  height: 80px;             /* Slightly smaller height */
+  margin: 0 auto;           /* Center horizontally */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,11 +19,23 @@ body{
 
 .sidebar-logo::before {
   content: "SP Textiles";   /* 🔹 Your text here */
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #003287;
-  
   text-align: center;
+  white-space: nowrap;      /* Prevent wrapping */
+}
+
+/* 📱 Mobile optimization */
+@media (max-width: 576px) {
+  .sidebar-logo {
+    height: 60px;           /* Compact on mobile */
+  }
+
+  .sidebar-logo::before {
+    font-size: 18px;        /* Slightly smaller text */
+    font-weight: 600;
+  }
 }
 
 
