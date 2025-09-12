@@ -10,7 +10,7 @@ body{
   background: none;
   position: relative;
   width: 100%;              /* Full width for flexibility */
-  height: 80px;             /* Slightly smaller height */
+  height: 50px;             /* Slightly smaller height */
   margin: 0 auto;           /* Center horizontally */
   display: flex;
   align-items: center;
@@ -18,8 +18,8 @@ body{
 }
 
 .sidebar-logo::before {
-  content: "SP Textiles";   /* 🔹 Your text here */
-  font-size: 22px;
+/* 🔹 Your text here */
+  font-size: px;
   font-weight: 700;
   color: #003287;
   text-align: center;
