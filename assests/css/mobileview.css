@@ -142,43 +142,41 @@
     background: #fafafa;
   }
 
-
-  /* 📱 Card Style Tables (Normal + DataTables) */
+/* 📱 Card Style Tables (Normal + DataTables) */
 @media (max-width: 768px) {
 
- /* 🔹 Neat & Centered DataTable Filter */
-div.dataTables_wrapper div.dataTables_filter {
-  text-align: center;        /* Center everything */
-  width: 100% !important;    
-  margin: 10px auto;         /* Space around */
-  padding: 0;
-  box-sizing: border-box;
-}
+  /* 🔹 Neat & Centered DataTable Filter */
+  div.dataTables_wrapper div.dataTables_filter {
+    text-align: center;
+    width: 100% !important;
+    margin: 10px auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-div.dataTables_wrapper div.dataTables_filter label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;       /* Center label + input */
-  font-weight: 400;
-  font-size: 13px;
-  margin: 0 auto;
-  width: auto;               /* Only as wide as needed */
-}
+  div.dataTables_wrapper div.dataTables_filter label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 400;
+    font-size: 13px;
+    margin: 0 auto;
+    width: auto;
+  }
 
-div.dataTables_wrapper div.dataTables_filter input {
-  margin-top: 5px;
-  width: 220px !important;   /* Fixed neat size */
-  max-width: 90%;            /* Shrink on very small screens */
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  padding: 6px 10px;
-  font-size: 13px;
-  box-sizing: border-box;
-  text-align: center;        /* Optional: center text inside */
-}
+  div.dataTables_wrapper div.dataTables_filter input {
+    margin-top: 5px;
+    width: 220px !important;
+    max-width: 90%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    font-size: 13px;
+    box-sizing: border-box;
+    text-align: center;
+  }
 
-
-  /* Payment buttons (Outward only) */
+  /* 🔹 Payment buttons (Outward only) */
   .payment-btn {
     display: flex;
     flex-direction: column;
@@ -210,7 +208,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     border-radius: 6px;
   }
 
-  /* Modal (both Inward + Outward) */
+  /* 🔹 Modal (both Inward + Outward) */
   .modal-content {
     border-radius: 20px;
     padding: 1rem;
@@ -224,8 +222,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     background: #fafafa;
   }
 
-
-  /* General table reset */
+  /* 🔹 General table reset */
   table,
   table.dataTable {
     border: 0;
@@ -249,7 +246,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     border-radius: 12px;
     padding: 12px 14px;
     margin-bottom: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* lighter shadow */
   }
 
   /* Cells stacked with label + value */
@@ -262,6 +259,14 @@ div.dataTables_wrapper div.dataTables_filter input {
     font-size: 14px;
     border: none;
     border-bottom: 1px dashed #e5e7eb;
+    text-align: left; /* default for text */
+    font-weight: 500;
+    color: #111827;
+  }
+
+  /* Numeric alignment helper */
+  table tbody td.numeric {
+    text-align: right;
   }
 
   /* Remove last border */
@@ -281,14 +286,6 @@ div.dataTables_wrapper div.dataTables_filter input {
     margin-right: 10px;
   }
 
-  /* Cell values */
-  table tbody td,
-  table.dataTable tbody td {
-    text-align: right;
-    font-weight: 500;
-    color: #111827;
-  }
-
   /* Action buttons aligned */
   table tbody td:last-child,
   table.dataTable tbody td:last-child {
@@ -297,7 +294,7 @@ div.dataTables_wrapper div.dataTables_filter input {
     gap: 8px;
   }
 
-  /* Table footers (Grand Total style) */
+  /* 🔹 Table footers (Grand Total style) */
   table tfoot,
   table.dataTable tfoot {
     display: block;
@@ -330,4 +327,3 @@ div.dataTables_wrapper div.dataTables_filter input {
     text-align: left;
   }
 }
-
