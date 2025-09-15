@@ -433,32 +433,7 @@ div.dataTables_wrapper div.dataTables_length select{
             background-color: #e9f5ff;
         }
 
-/* Mobile-friendly DataTables adjustments */
-@media (max-width: 767px) {
 
-  /* Stack controls nicely */
-  div.dataTables_wrapper .dataTables_length,
-  div.dataTables_wrapper .dataTables_filter,
-  div.dataTables_wrapper .dataTables_info,
-  div.dataTables_wrapper .dataTables_paginate {
-    text-align: left !important;
-    margin-bottom: 10px;
-    width: 100%; /* Full width blocks */
-  }
-
-  /* Search box full width on small screens */
-  div.dataTables_wrapper .dataTables_filter input {
-    width: 100% !important;
-    margin-top: 5px;
-  }
-
-  /* Pagination buttons better spacing */
-  div.dataTables_wrapper .dataTables_paginate .paginate_button {
-    padding: 5px 10px;
-    margin: 2px;
-  }
-}
-        
 
 
 /* Login page */

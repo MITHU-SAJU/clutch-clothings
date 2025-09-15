@@ -107,31 +107,27 @@
                 <!-- Inward Form -->
                 <form id="inwardForm" class="row g-3 justify-content-center">
 
-                    <!-- Supplier (full width row) -->
-                    <div class="col-12">
-                        <div class="border rounded-4 p-4 shadow-sm mb-4 bg-white text-center">
-                            <label class=" fw-bold fs-5 mb-3 w-100 text-center">SUPPLIER</label>
+                    <div class="row g-3 justify-content-center">
+                        <!-- Supplier Select -->
+                        <div class="col-9 col-sm-8 col-md-6">
+                            <select id="supplier" class="form-select-custom form-select w-100" required
+                                style="border-radius: 10px; border: 1px solid #ddd;">
+                                <option value="" disabled selected>Select Supplier</option>
+                                <option value="supplier1">Supplier 1</option>
+                                <option value="supplier2">Supplier 2</option>
+                                <option value="supplier3">Supplier 3</option>
+                            </select>
+                        </div>
 
-                            <div class="row g-2 justify-content-center">
-                                <div class="col-12 col-sm-8 col-md-6">
-                                    <select id="supplier" class=" form-select-custom form-select w-100" required
-                                        style="border-radius: 10px; border: 1px solid #ddd;">
-                                        <option value="" disabled selected>Select Supplier</option>
-                                        <option value="supplier1">Supplier 1</option>
-                                        <option value="supplier2">Supplier 2</option>
-                                        <option value="supplier3">Supplier 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-sm-2 col-md-1 d-grid">
-                                    <!-- Add Supplier Button -->
-                                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                        data-bs-target="#addSupplierModal">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
+                        <!-- Add Supplier Button -->
+                        <div class="col-3 col-sm-2 col-md-1 d-grid">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                data-bs-target="#addSupplierModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
                         </div>
                     </div>
+
 
                     <!-- Product / Quantity / Amount in one row -->
                     <div class="col-12 col-md-6">
