@@ -237,11 +237,19 @@
 
    .form-control,
     .form-select {
-          padding: 6px 14px;
+          padding: 11px 14px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 20px;
     background-color: #f9f9f9;
     transition: border-color 0.3s ease, box-shadow 0.2s ease;
     }
+}
+
+@media (max-width: 576px) {
+  .btn-success {
+    font-size: 20px;       /* Bigger text */
+    padding: 11px 28px;    /* More padding */
+    width: 100%;           /* Full width button */
+  }
 }
