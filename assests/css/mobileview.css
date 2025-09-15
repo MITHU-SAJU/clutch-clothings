@@ -138,6 +138,12 @@
     padding: 0.5rem;
     box-sizing: border-box;   /* ensures padding doesn’t add extra width */
   }
+  .form-select-custom {
+  height: 70px;          /* adjust as needed */
+  font-size: 1.8rem;       /* slightly larger text */
+  padding: 10px 15px;    /* more padding inside */
+  border-radius: 12px;   /* keep it curved */
+}
 }
 
 
