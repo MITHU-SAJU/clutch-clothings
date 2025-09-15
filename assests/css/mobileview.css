@@ -138,12 +138,6 @@
     padding: 0.5rem;
     box-sizing: border-box;   /* ensures padding doesn’t add extra width */
   }
-  .form-select-custom {
-  height: 70px;          /* adjust as needed */
-  font-size: 1.7rem !important;       /* slightly larger text */
-  padding: 10px 15px;    /* more padding inside */
-  border-radius: 12px;   /* keep it curved */
-}
 }
 
 
@@ -226,4 +220,18 @@
         border-radius: 11px;
         width: 100%;
   }
+}
+
+@media (max-width: 768px) {
+  .form-select-custom {
+  height: 70px;          /* adjust as needed */      /* slightly larger text */
+  padding: 10px 15px;    /* more padding inside */
+  border-radius: 12px;
+   padding: 6px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 20px !important;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.2s ease;   /* keep it curved */
+}
 }
