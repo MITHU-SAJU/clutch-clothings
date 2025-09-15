@@ -140,7 +140,7 @@
   }
   .form-select-custom {
   height: 70px;          /* adjust as needed */
-  font-size: 1.8rem;       /* slightly larger text */
+  font-size: 1.7rem !important;       /* slightly larger text */
   padding: 10px 15px;    /* more padding inside */
   border-radius: 12px;   /* keep it curved */
 }
