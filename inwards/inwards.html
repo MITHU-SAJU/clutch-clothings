@@ -72,19 +72,32 @@
                 </a>
             </li>
 
-            <!-- Suppliers -->
-            <li>
-                <a href="../suppliers/supplier-list.html">
-                    <i class="fas fa-truck"></i>
-                    <span>Suppliers</span>
-                </a>
-            </li>
+
 
             <li>
                 <a href="../user-creation/user-list.html">
                     <i class="fas fa-user"></i>
                     <span>Users</span>
                 </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#settingsSubmenu" data-bs-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-cog me-2"></i>
+                        <span>Settings</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </a>
+                <ul class="collapse list-unstyled ps-4" id="settingsSubmenu">
+                    <li><a href="./settings/category.html"><i class="fas fa-tags me-2"></i>Category</a></li>
+                    <li><a href="./settings/color.html"><i class="fas fa-palette me-2"></i>Color</a></li>
+                    <li><a href="./settings/sizes.html"><i class="fas fa-ruler-combined me-2"></i>Sizes</a></li>
+                    <li><a href="./settings/uom.html"><i class="fas fa-balance-scale me-2"></i>UOM</a></li>
+                    <li><a href="./settings/brands.html"><i class="fas fa-tshirt me-2"></i>Brands</a></li>
+                    <li><a href="./settings/locations.html"><i class="fas fa-map-marker-alt me-2"></i>Locations</a></li>
+                </ul>
             </li>
         </ul>
     </nav>
@@ -107,36 +120,15 @@
                 <!-- Inward Form -->
                 <form id="inwardForm" class="row g-3 justify-content-center">
 
-                    <div class="row g-3 justify-content-center">
-                        <!-- Supplier Select -->
-                        <div class="col-9 col-sm-8 col-md-6">
-                            <select id="supplier" class="form-select-custom  w-100" required
-                                style="border-radius: 10px; border: 1px solid #ddd;">
-                                <option value="" disabled selected>Select Supplier</option>
-                                <option value="supplier1">Supplier 1</option>
-                                <option value="supplier2">Supplier 2</option>
-                                <option value="supplier3">Supplier 3</option>
-                            </select>
-                        </div>
-
-                        <!-- Add Supplier Button -->
-                        <div class="col-3 col-sm-2 col-md-1 d-grid">
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-                                data-bs-target="#addSupplierModal">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-
 
                     <!-- Product / Quantity / Amount in one row -->
                     <div class="col-12 col-md-6">
                         <label class="form-label">Product</label>
                         <select id="product" class="form-select" required>
                             <option value="" disabled selected>Select </option>
-                            <option value="Yarn Type A">Yarn Type A</option>
-                            <option value="Yarn Type B">Yarn Type B</option>
-                            <option value="Yarn Type C">Yarn Type C</option>
+                            <option value="Yarn Type A">Product 1</option>
+                            <option value="Yarn Type B">Product 2</option>
+                            <option value="Yarn Type C">Product 3</option>
                         </select>
                     </div>
 
@@ -180,27 +172,50 @@
         <div class="container-fluid my-5">
             <div class="custom-box p-4">
                 <h4 class="fw-bold text-secondary mb-3">Inward Entries</h4>
-                <div class="table-responsive">
-                    <table class="table table-bordered align-middle text-center" id="inwardTable">
+                <div class="table-responsive mt-4">
+                    <table class="table table-bordered table-striped text-center align-middle mb-0" id="variantTable">
                         <thead class="table-light">
                             <tr>
-                                <th>S.No</th>
-                                <th>Product</th>
-                                <th>Quantity</th>
-                                <th>Uom</th>
+                                <th>Size</th>
+                                <th>Qty</th>
                                 <th>Rate</th>
+                                <th>Barcode</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- Data will be inserted here -->
-                        </tbody>
-                        <!-- <tfoot class="fw-bold table-success text-center">
                             <tr>
-                                <td colspan="3">Grand Total</td>
-                                <td>1320</td>
+                                <td>S</td>
+                                <td>20</td>
+                                <td>500</td>
+                                <td>123456789012</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Edit</button>
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </td>
                             </tr>
-                        </tfoot> -->
+                            <tr>
+                                <td>M</td>
+                                <td>30</td>
+                                <td>550</td>
+                                <td>123456789013</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Edit</button>
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>25</td>
+                                <td>600</td>
+                                <td>123456789014</td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Edit</button>
+                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+
                     </table>
                 </div>
                 <div class="mt-4 text-center">

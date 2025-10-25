@@ -13,6 +13,21 @@
     <link rel="stylesheet" href="./assests/css/styles.css">
     <link rel="stylesheet" href="./assests/css/mobileview.css">
 </head>
+<style>
+    .arrow-icon {
+        transition: transform 0.3s ease;
+    }
+
+    /* Rotate arrow when expanded */
+    .nav-item a[aria-expanded="true"] .arrow-icon {
+        transform: rotate(90deg);
+    }
+
+    /* Remove Bootstrap's default dropdown arrow */
+    .dropdown-toggle::after {
+        display: none !important;
+    }
+</style>
 
 <body>
     <!-- Sidebar Toggle Button -->
@@ -77,13 +92,8 @@
                 </a>
             </li>
 
-            <!-- Suppliers -->
-            <li>
-                <a href="./suppliers/supplier-list.html">
-                    <i class="fas fa-truck"></i>
-                    <span>Suppliers</span>
-                </a>
-            </li>
+
+
 
             <!-- Users -->
             <li>
@@ -92,6 +102,29 @@
                     <span>Users</span>
                 </a>
             </li>
+
+
+            <li class="nav-item">
+                <a href="#settingsSubmenu" data-bs-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-cog me-2"></i>
+                        <span>Settings</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </a>
+                <ul class="collapse list-unstyled ps-4" id="settingsSubmenu">
+                    <li><a href="./settings/category.html"><i class="fas fa-tags me-2"></i>Category</a></li>
+                    <li><a href="./settings/color.html"><i class="fas fa-palette me-2"></i>Color</a></li>
+                    <li><a href="./settings/sizes.html"><i class="fas fa-ruler-combined me-2"></i>Sizes</a></li>
+                    <li><a href="./settings/uom.html"><i class="fas fa-balance-scale me-2"></i>UOM</a></li>
+                    <li><a href="./settings/brands.html"><i class="fas fa-tshirt me-2"></i>Brands</a></li>
+                    <li><a href="./settings/locations.html"><i class="fas fa-map-marker-alt me-2"></i>Locations</a></li>
+                </ul>
+            </li>
+
+
+
 
         </ul>
     </nav>
@@ -157,8 +190,9 @@
             </div>
             <div class="col-md-3">
                 <div class="card-summary bg-custom-suppliers text-center">
-                    <h5>Total Suppliers</h5>
-                    <div class="fs-3"><i class="fas fa-truck me-2"></i>78</div>
+                    <h5>Total Bills</h5>
+                    <div class="fs-3"><i class="fas fa-receipt me-2">
+                        </i>78</div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -185,31 +219,56 @@
                     <thead>
                         <tr>
                             <th>S.No</th>
+                            <th>Invoice No</th>
                             <th>Customer</th>
                             <th>Amount</th>
+                            <th>Date</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>John Doe</td>
-                            <td>$250</td>
-                            <td><span class="badge bg-success">Completed</span></td>
+                            <td>INV/2025/001</td>
+                            <td>FabIndia</td>
+                            <td>₹28,450</td>
+                            <td>25-Oct-2025</td>
+                            <td><span class="badge bg-success">Paid</span></td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>$480</td>
+                            <td>INV/2025/002</td>
+                            <td>Biba Apparels</td>
+                            <td>₹19,870</td>
+                            <td>24-Oct-2025</td>
                             <td><span class="badge bg-warning">Pending</span></td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Mike Johnson</td>
-                            <td>$320</td>
-                            <td><span class="badge bg-info">Shipped</span></td>
+                            <td>INV/2025/003</td>
+                            <td>Manyavar</td>
+                            <td>₹45,320</td>
+                            <td>23-Oct-2025</td>
+                            <td><span class="badge bg-success">Paid</span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>INV/2025/004</td>
+                            <td>W for Woman</td>
+                            <td>₹22,650</td>
+                            <td>22-Oct-2025</td>
+                            <td><span class="badge bg-danger">Overdue</span></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>INV/2025/005</td>
+                            <td>Raymond</td>
+                            <td>₹37,900</td>
+                            <td>21-Oct-2025</td>
+                            <td><span class="badge bg-success">Paid</span></td>
                         </tr>
                     </tbody>
+
                 </table>
             </div>
         </div>

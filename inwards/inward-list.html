@@ -76,13 +76,32 @@
                 </a>
             </li>
 
-            <!-- Suppliers -->
             <li>
-                <a href="../suppliers/supplier-list.html">
-                    <i class="fas fa-truck"></i>
-                    <span>Suppliers</span>
+                <a href="../user-creation/user-list.html">
+                    <i class="fas fa-user"></i>
+                    <span>Users</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="#settingsSubmenu" data-bs-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-cog me-2"></i>
+                        <span>Settings</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </a>
+                <ul class="collapse list-unstyled ps-4" id="settingsSubmenu">
+                    <li><a href="./settings/category.html"><i class="fas fa-tags me-2"></i>Category</a></li>
+                    <li><a href="./settings/color.html"><i class="fas fa-palette me-2"></i>Color</a></li>
+                    <li><a href="./settings/sizes.html"><i class="fas fa-ruler-combined me-2"></i>Sizes</a></li>
+                    <li><a href="./settings/uom.html"><i class="fas fa-balance-scale me-2"></i>UOM</a></li>
+                    <li><a href="./settings/brands.html"><i class="fas fa-tshirt me-2"></i>Brands</a></li>
+                    <li><a href="./settings/locations.html"><i class="fas fa-map-marker-alt me-2"></i>Locations</a></li>
+                </ul>
+            </li>
+
         </ul>
     </nav>
 
@@ -127,7 +146,6 @@
                         <thead class="table-primary">
                             <tr>
                                 <th>S.No</th>
-                                <th>Supplier Name</th>
                                 <th>Quantity</th>
                                 <th>Uom</th>
                                 <th>Amount</th>
@@ -137,12 +155,12 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>John Doe</td>
+
                                 <td>2</td>
                                 <td>Kg</td>
                                 <td>10000</td>
                                 <td class="text-center">
-                                    <a href="./view-inwards.html" class="btn btn-sm btn-info me-1" title="View">
+                                    <a href="" class="btn btn-sm btn-info me-1" title="View">
                                         <i class="bi bi-eye"></i>
                                     </a>
                                     <a href="edit-page.html?id=123" class="btn btn-sm btn-warning me-1" title="Edit">

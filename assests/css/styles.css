@@ -4,7 +4,19 @@ body{
 .bg-custom{
     background-color: #003287;
 }
+  .arrow-icon {
+        transition: transform 0.3s ease;
+    }
 
+    /* Rotate arrow when expanded */
+    .nav-item a[aria-expanded="true"] .arrow-icon {
+        transform: rotate(90deg);
+    }
+
+    /* Remove Bootstrap's default dropdown arrow */
+    .dropdown-toggle::after {
+        display: none !important;
+    }
 
 .sidebar-logo {
   background: none;

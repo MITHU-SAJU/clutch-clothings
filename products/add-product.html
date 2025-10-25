@@ -12,6 +12,23 @@
     <link rel="stylesheet" href="../assests/css/styles.css">
     <link rel="stylesheet" href="../assests/css/mobileview.css">
 </head>
+<style>
+    #previewImage {
+        display: none;
+        width: 100%;
+        /* fills the column */
+        max-width: 100%;
+        /* approximate width of a col-4 on large screens */
+        height: 220px;
+        /* fixed height for uniformity */
+        object-fit: cover;
+        /* nicely crops image without distortion */
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+</style>
 
 <body>
     <!-- Sidebar Toggle Button -->
@@ -73,19 +90,31 @@
                 </a>
             </li>
 
-            <!-- Suppliers -->
-            <li>
-                <a href="../suppliers/supplier-list.html">
-                    <i class="fas fa-truck"></i>
-                    <span>Suppliers</span>
-                </a>
-            </li>
 
             <li>
                 <a href="../user-creation/user-list.html">
                     <i class="fas fa-user"></i>
                     <span>Users</span>
                 </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#settingsSubmenu" data-bs-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-cog me-2"></i>
+                        <span>Settings</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </a>
+                <ul class="collapse list-unstyled ps-4" id="settingsSubmenu">
+                    <li><a href="./settings/category.html"><i class="fas fa-tags me-2"></i>Category</a></li>
+                    <li><a href="./settings/color.html"><i class="fas fa-palette me-2"></i>Color</a></li>
+                    <li><a href="./settings/sizes.html"><i class="fas fa-ruler-combined me-2"></i>Sizes</a></li>
+                    <li><a href="./settings/uom.html"><i class="fas fa-balance-scale me-2"></i>UOM</a></li>
+                    <li><a href="./settings/brands.html"><i class="fas fa-tshirt me-2"></i>Brands</a></li>
+                    <li><a href="./settings/locations.html"><i class="fas fa-map-marker-alt me-2"></i>Locations</a></li>
+                </ul>
             </li>
         </ul>
     </nav>
@@ -109,58 +138,139 @@
                 <form>
                     <div class="row g-3">
                         <!-- Product Code -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Product Code</label>
                             <input type="text" class="form-control" placeholder="Enter product code">
                         </div>
 
                         <!-- Product Name -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label class="form-label">Product Name</label>
                             <input type="text" class="form-control" placeholder="Enter product name">
                         </div>
 
-                        <!-- Shade -->
-                        <div class="col-md-6">
-                            <label class="form-label">Shade #</label>
-                            <input type="text" class="form-control" placeholder="Enter shade number">
+                        <div class="col-md-4">
+                            <label class="form-label">Category</label>
+                            <select class="form-select">
+                                <option selected disabled>Choose Category</option>
+                                <option>mens-shirt</option>
+                                <option>mens-Pant</option>
+                                <option>girls-Pant</option>
+                            </select>
                         </div>
 
-                        <!-- Colour -->
-                        <div class="col-md-6">
-                            <label class="form-label">Colour</label>
+                        <!-- Color -->
+                        <div class="col-md-4">
+                            <label class="form-label">Color</label>
                             <select class="form-select">
-                                <option selected disabled>Choose colour</option>
+                                <option selected disabled>Choose color</option>
                                 <option>Red</option>
                                 <option>Blue</option>
                                 <option>Green</option>
                                 <option>Yellow</option>
+                                <option>Black</option>
+                                <option>White</option>
                             </select>
                         </div>
 
-                        <!-- Yarn Count / Item Type -->
-                        <div class="col-md-6">
-                            <label class="form-label">Yarn Count</label>
+                        <!-- Brand -->
+                        <div class="col-md-4">
+                            <label class="form-label">Brand</label>
                             <select class="form-select">
-                                <option selected disabled>Select type</option>
-                                <option>2 Ply</option>
-                                <option>3 Ply</option>
-                                <option>Poly/Nylon</option>
-                                <option>2 Ply Spun</option>
+                                <option selected disabled>Select brand</option>
+                                <option>Raymond</option>
+                                <option>Allen Solly</option>
+                                <option>Peter England</option>
+                                <option>Van Heusen</option>
+                                <option>Park Avenue</option>
                             </select>
                         </div>
 
-
-                        <div class="col-md-6">
+                        <!-- UOM -->
+                        <div class="col-md-4">
                             <label class="form-label">UOM</label>
                             <select class="form-select">
-                                <option selected disabled>Choose uom</option>
+                                <option selected disabled>Choose UOM</option>
                                 <option>PCS</option>
                                 <option>KG</option>
                                 <option>UNIT</option>
+                                <option>PACK</option>
                             </select>
                         </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Product Image</label>
+                            <input type="file" class="form-control" accept="image/*" id="productImage">
+                            <div class="mt-2 text-center">
+                                <img id="previewImage" src="#" alt="Preview" style="display:none; ">
+                            </div>
+                        </div>
                     </div>
+
+
+                    <!-- 🧩 Size/Qty/Rate/Barcode Section -->
+                    <div class="card mt-4 border-0 shadow-lg bg-light">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3 text-primary fw-bold">Product Variants</h5>
+
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-3">
+                                    <label class="form-label">Size</label>
+                                    <select id="size" class="form-select">
+                                        <option selected disabled>Choose size</option>
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                        <option>XXL</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label class="form-label">Qty</label>
+                                    <input type="number" id="qty" class="form-control" placeholder="Qty">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label class="form-label">Rate</label>
+                                    <input type="number" id="rate" class="form-control" placeholder="Rate">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label class="form-label">Barcode</label>
+                                    <input type="text" id="barcode" class="form-control" placeholder="Barcode">
+                                </div>
+
+                                <div class="col-md-1 text-center">
+                                    <label class="form-label text-white">+</label>
+                                    <button type="button" id="addRow"
+                                        class="btn btn-success btn-lg rounded shadow-sm w-100">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive mt-4">
+                                <table class="table table-bordered table-striped text-center align-middle mb-0"
+                                    id="variantTable">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Size</th>
+                                            <th>Qty</th>
+                                            <th>Rate</th>
+                                            <th>Barcode</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Dynamic rows will appear here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
 
                     <!-- Submit -->
                     <div class="mt-4 text-center">
@@ -170,11 +280,75 @@
                     </div>
                 </form>
 
+
             </div>
         </div>
     </div>
     </div>
     <script src="../assests/js/script.js"></script>
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Vk3FHZs4zpXc8i4FfXJ0fH1XK1+eoR0N4S4lz0hYFv+9z7nJwVwqSzx8xE2gnv7p" crossorigin="anonymous">
+    </script>
+
+    <script>
+        const imageInput = document.getElementById('productImage');
+        const previewImage = document.getElementById('previewImage');
+
+        imageInput.addEventListener('change', function () {
+            const file = this.files[0];
+            if (file) {
+                previewImage.style.display = 'block';
+                previewImage.src = URL.createObjectURL(file);
+            } else {
+                previewImage.style.display = 'none';
+                previewImage.src = '#';
+            }
+        });
+
+
+
+        // 🔹 Dynamic row addition
+        const addRowBtn = document.getElementById('addRow');
+        const tableBody = document.querySelector('#variantTable tbody');
+
+        addRowBtn.addEventListener('click', () => {
+            const size = document.getElementById('size').value;
+            const qty = document.getElementById('qty').value;
+            const rate = document.getElementById('rate').value;
+            const barcode = document.getElementById('barcode').value;
+
+            if (!size || !qty || !rate || !barcode) {
+                alert('Please fill all fields before adding.');
+                return;
+            }
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+      <td>${size}</td>
+      <td>${qty}</td>
+      <td>${rate}</td>
+      <td>${barcode}</td>
+      <td><button type="button" class="btn btn-danger btn-sm deleteRow">Delete</button></td>
+    `;
+
+            // Add new row to the top
+            tableBody.prepend(newRow);
+
+            // Clear inputs
+            document.getElementById('size').selectedIndex = 0;
+            document.getElementById('qty').value = '';
+            document.getElementById('rate').value = '';
+            document.getElementById('barcode').value = '';
+        });
+
+        // 🔹 Delete row functionality
+        tableBody.addEventListener('click', (e) => {
+            if (e.target.classList.contains('deleteRow')) {
+                e.target.closest('tr').remove();
+            }
+        });
+    </script>
 
 </body>
 

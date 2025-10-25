@@ -75,13 +75,8 @@
                 </a>
             </li>
 
-            <!-- Suppliers -->
-            <li>
-                <a href="./supplier-list.html">
-                    <i class="fas fa-truck"></i>
-                    <span>Suppliers</span>
-                </a>
-            </li>
+
+
 
             <li>
                 <a href="../user-creation/user-list.html">
@@ -89,6 +84,26 @@
                     <span>Users</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="#settingsSubmenu" data-bs-toggle="collapse" aria-expanded="false"
+                    class="dropdown-toggle d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-cog me-2"></i>
+                        <span>Settings</span>
+                    </div>
+                    <i class="fas fa-chevron-right arrow-icon"></i>
+                </a>
+                <ul class="collapse list-unstyled ps-4" id="settingsSubmenu">
+                    <li><a href="./settings/category.html"><i class="fas fa-tags me-2"></i>Category</a></li>
+                    <li><a href="./settings/color.html"><i class="fas fa-palette me-2"></i>Color</a></li>
+                    <li><a href="./settings/sizes.html"><i class="fas fa-ruler-combined me-2"></i>Sizes</a></li>
+                    <li><a href="./settings/uom.html"><i class="fas fa-balance-scale me-2"></i>UOM</a></li>
+                    <li><a href="./settings/brands.html"><i class="fas fa-tshirt me-2"></i>Brands</a></li>
+                    <li><a href="./settings/locations.html"><i class="fas fa-map-marker-alt me-2"></i>Locations</a></li>
+                </ul>
+            </li>
+
         </ul>
     </nav>
 
@@ -128,6 +143,16 @@
 
                             <!-- Filter by Color -->
                             <div class="col-md-2">
+                                <label class="form-label ">Filter by Category</label>
+                                <select class="form-select">
+                                    <option value="">All Categories</option>
+                                    <option>Mens shirts</option>
+                                    <option>Mens Pants</option>
+
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
                                 <label class="form-label ">Filter by Color</label>
                                 <select class="form-select">
                                     <option value="">All Colors</option>
@@ -138,27 +163,20 @@
                                     <option>Black</option>
                                     <option>White</option>
                                 </select>
-                            </div>
 
-                            <div class="col-md-2">
-                                <label class="form-label ">Filter by Yarn Type</label>
-                                <select class="form-select">
-                                    <option value="">All Types</option>
-                                    <option>2 Ply</option>
-                                    <option>3 Ply</option>
-                                    <option>Poly/Nylon</option>
-                                    <option>2 Ply Spun</option>
-                                </select>
                             </div>
 
                             <!-- General Filter -->
                             <div class="col-md-2">
-                                <label class="form-label ">Filter</label>
+                                <label class="form-label ">Filter by Brand</label>
                                 <select class="form-select">
-                                    <option>All</option>
-                                    <option>Today</option>
-                                    <option>Last 3 Days</option>
-                                    <option>Last 7 Days</option>
+                                    <option value="">All Brands</option>
+                                    <option>Higlander</option>
+                                    <option>Pepe</option>
+                                    <option>UCB</option>
+                                    <option>
+                                        SO-ME
+                                    </option>
                                     <option>Custom</option>
                                 </select>
                             </div>
@@ -181,57 +199,140 @@
                                 <thead class="table-dark text-center">
                                     <tr>
                                         <th>S.No</th>
-                                        <th>Item Code</th>
-                                        <th>Item Category</th>
+                                        <th>Image</th>
+                                        <th>Category</th>
+                                        <th>Product Name</th>
                                         <th>Color</th>
-                                        <th>Stock</th>
-                                        <th>Actions</th>
+                                        <th>Total Stock</th>
+                                        <th>Location 1</th>
+                                        <th>Location 2</th>
                                     </tr>
+
                                 </thead>
                                 <tbody class="text-center">
                                     <tr>
                                         <td>1</td>
-                                        <td>ITM001</td>
-                                        <td>Yarn</td>
+                                        <td><img src="../assests/images/p1.jpg" alt="" class="rounded-circle"
+                                                style="width:40px;height:40px;"></td>
+                                        <td>Shirt</td>
+                                        <td>Classic Shirt</td>
                                         <td>Red</td>
-                                        <td>30</td>
+                                        <td>150</td>
                                         <td>
-                                            <button class="btn btn-sm btn-info" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-warning" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-danger" title="Delete">
-                                                <i class="fas fa-trash"></i>
+                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#location1Modal">
+                                                80
                                             </button>
                                         </td>
-
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#location2Modal">
+                                                70
+                                            </button>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>2</td>
-                                        <td>ITM002</td>
-                                        <td>Fabric</td>
-                                        <td>Blue</td>
-                                        <td>40</td>
+                                        <td>1</td>
+                                        <td><img src="../assests/images/p1.jpg" alt="" class="rounded-circle"
+                                                style="width:40px;height:40px;"></td>
+                                        <td>Shirt</td>
+                                        <td>Classic Shirt</td>
+                                        <td>Red</td>
+                                        <td>150</td>
                                         <td>
-                                            <button class="btn btn-sm btn-info" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-warning" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-danger" title="Delete">
-                                                <i class="fas fa-trash"></i>
+                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#location1Modal">
+                                                80
                                             </button>
                                         </td>
-
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#location2Modal">
+                                                70
+                                            </button>
+                                        </td>
                                     </tr>
                                     <!-- Add More Rows Dynamically -->
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Location 1 Modal -->
+    <div class="modal fade" id="location1Modal" tabindex="-1" aria-labelledby="location1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="location1Label">Location 1 Stock Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S</td>
+                                <td>20</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>30</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>30</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location 2 Modal -->
+    <div class="modal fade" id="location2Modal" tabindex="-1" aria-labelledby="location2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="location2Label">Location 2 Stock Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>S</td>
+                                <td>15</td>
+                            </tr>
+                            <tr>
+                                <td>M</td>
+                                <td>25</td>
+                            </tr>
+                            <tr>
+                                <td>L</td>
+                                <td>30</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
