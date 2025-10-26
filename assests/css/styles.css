@@ -8,6 +8,12 @@ body{
         transition: transform 0.3s ease;
     }
 
+      /* rotate the arrow when .rotated is present */
+        .arrow-icon.rotated {
+            transform: rotate(90deg);
+            transition: transform .18s ease;
+        }
+
     /* Rotate arrow when expanded */
     .nav-item a[aria-expanded="true"] .arrow-icon {
         transform: rotate(90deg);
