@@ -132,24 +132,65 @@
                         </select>
                     </div>
 
-                    <div class="row g-2">
-                        <!-- Quantity -->
-                        <div class="col-5">
-                            <label class="form-label">Quantity</label>
-                            <input type="number" id="quantity" class="form-control" placeholder=" Qty" required>
-                        </div>
+                    <!-- 🧩 Size/Qty/Rate/Barcode Section -->
+                    <div class="card mt-4 border-0 shadow-lg bg-light">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3 text-primary fw-bold">Inwards</h5>
 
-                        <!-- UOM Dropdown -->
-                        <div class="col-3">
-                            <label class="form-label">UOM</label>
-                            <input type="text" class="form-control" value="Kg" readonly>
-                        </div>
+                            <div class="row g-3 align-items-end">
+                                <div class="col-md-3">
+                                    <label class="form-label">Size</label>
+                                    <select id="size" class="form-select">
+                                        <option selected disabled>Choose size</option>
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                        <option>XXL</option>
+                                    </select>
+                                </div>
 
+                                <div class="col-md-2">
+                                    <label class="form-label">Qty</label>
+                                    <input type="number" id="qty" class="form-control" placeholder="Qty">
+                                </div>
 
-                        <!-- Rate -->
-                        <div class="col-4">
-                            <label class="form-label">Rate</label>
-                            <input type="number" id="rate" class="form-control" placeholder="Rate" required>
+                                <div class="col-md-3">
+                                    <label class="form-label">Rate</label>
+                                    <input type="number" id="rate" class="form-control" placeholder="Rate">
+                                </div>
+
+                                <div class="col-md-3">
+                                    <label class="form-label">Barcode</label>
+                                    <input type="text" id="barcode" class="form-control" placeholder="Barcode">
+                                </div>
+
+                                <div class="col-md-1 text-center">
+                                    <label class="form-label text-white">+</label>
+                                    <button type="button" id="addRow"
+                                        class="btn btn-success btn-lg rounded shadow-sm w-100">
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive mt-4">
+                                <table class="table table-bordered table-striped text-center align-middle mb-0"
+                                    id="variantTable">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Size</th>
+                                            <th>Qty</th>
+                                            <th>Rate</th>
+                                            <th>Barcode</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Dynamic rows will appear here -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -169,62 +210,6 @@
 
 
 
-        <div class="container-fluid my-5">
-            <div class="custom-box p-4">
-                <h4 class="fw-bold text-secondary mb-3">Inward Entries</h4>
-                <div class="table-responsive mt-4">
-                    <table class="table table-bordered table-striped text-center align-middle mb-0" id="variantTable">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Size</th>
-                                <th>Qty</th>
-                                <th>Rate</th>
-                                <th>Barcode</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>S</td>
-                                <td>20</td>
-                                <td>500</td>
-                                <td>123456789012</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>M</td>
-                                <td>30</td>
-                                <td>550</td>
-                                <td>123456789013</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>L</td>
-                                <td>25</td>
-                                <td>600</td>
-                                <td>123456789014</td>
-                                <td>
-                                    <button class="btn btn-sm btn-primary">Edit</button>
-                                    <button class="btn btn-sm btn-danger">Delete</button>
-                                </td>
-                            </tr>
-                        </tbody>
-
-                    </table>
-                </div>
-                <div class="mt-4 text-center">
-                    <button type="submit" class="btn btn-add px-5 rounded-3 shadow">
-                        Submit
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -270,65 +255,47 @@
     <script src="../assests/js/script.js"></script>
     <!-- Bootstrap JS (bundle includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
-        // Load existing data from localStorage
-        let inwardData = JSON.parse(localStorage.getItem("inwardData")) || [];
+        // 🔹 Dynamic row addition
+        const addRowBtn = document.getElementById('addRow');
+        const tableBody = document.querySelector('#variantTable tbody');
 
-        const inwardForm = document.getElementById("inwardForm");
-        const inwardTableBody = document.querySelector("#inwardTable tbody");
+        addRowBtn.addEventListener('click', () => {
+            const size = document.getElementById('size').value;
+            const qty = document.getElementById('qty').value;
+            const rate = document.getElementById('rate').value;
+            const barcode = document.getElementById('barcode').value;
 
-        // Function to render table
-        function renderTable() {
-            inwardTableBody.innerHTML = "";
-            inwardData.forEach((entry, index) => {
-                inwardTableBody.innerHTML += `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${entry.product}</td>
-          <td>${entry.quantity}</td>
-          <td>${entry.uom}</td>
-             <td>${entry.rate}</td>
-          <td>
-            <button class="btn btn-sm btn-danger" onclick="deleteEntry(${index})">
-              <i class="fas fa-trash"></i> 
-            </button>
-          </td>
-        </tr>
-      `;
-            });
-            localStorage.setItem("inwardData", JSON.stringify(inwardData));
-        }
-
-        // Add new entry
-        inwardForm.addEventListener("submit", function (e) {
-            e.preventDefault();
-            const product = document.getElementById("product").value;
-            const quantity = document.getElementById("quantity").value;
-            const uom = document.getElementById("uom").value;
-            const rate = document.getElementById("rate").value;
-
-            if (product && quantity) {
-                inwardData.push({
-                    product,
-                    quantity,
-                    uom,
-                    rate
-
-                });
-                renderTable();
-                inwardForm.reset();
+            if (!size || !qty || !rate || !barcode) {
+                alert('Please fill all fields before adding.');
+                return;
             }
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+      <td>${size}</td>
+      <td>${qty}</td>
+      <td>${rate}</td>
+      <td>${barcode}</td>
+      <td><button type="button" class="btn btn-danger btn-sm deleteRow">Delete</button></td>
+    `;
+
+            // Add new row to the top
+            tableBody.prepend(newRow);
+
+            // Clear inputs
+            document.getElementById('size').selectedIndex = 0;
+            document.getElementById('qty').value = '';
+            document.getElementById('rate').value = '';
+            document.getElementById('barcode').value = '';
         });
 
-        // Delete entry
-        function deleteEntry(index) {
-            inwardData.splice(index, 1);
-            renderTable();
-        }
-
-        // Initial render
-        renderTable();
+        // 🔹 Delete row functionality
+        tableBody.addEventListener('click', (e) => {
+            if (e.target.classList.contains('deleteRow')) {
+                e.target.closest('tr').remove();
+            }
+        });
     </script>
 
     <script>
